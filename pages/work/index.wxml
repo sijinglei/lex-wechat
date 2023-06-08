@@ -1,5 +1,6 @@
 <view class="work">
-  <view class="{{['head',(isFixed)?'fixed':'']}}" style="{{'padding-top:'+(statusBar+'px')+';'+('height:'+((!isFixed?customBar:0)+'px')+';')}}">
+  <view class="{{['head',(isFixed)?'fixed':'']}}"
+    style="{{'padding-top:'+(statusBar+'px')+';'+('height:'+((!isFixed?customBar:0)+'px')+';')}}">
     <image class="logo" src="/image/logo.jpg" mode="aspectFill"></image>
     <view class="title"><text class="h1">乐享零工</text><text class="txt">随时随地，轻松工作！</text></view>
   </view>
@@ -23,22 +24,29 @@
           <view class="{{d.id==currentId?'active':''}}" data-id="{{d.id}}" catchtap="tabClick">{{d.text+''}}</view>
         </block>
       </view>
-      <view class="right" bindtap="openFilter">筛选
+      <view class="right" catchtap="openFilter">筛选
         <van-icon name="arrow-down" />
       </view>
     </view>
+
     <view class="list" bindtouchstart="touchStart" bindtouchend="touchEnd" animation="{{animationData}}">
-      <block wx:for="{{list}}" wx:for-item="d" wx:key="*this">
-        <block>
-          <com-item item="{{d}}" type="{{1}}"></com-item>
-        </block>
+
+      <block wx:for="{{5}}" wx:for-item="d">
+        <van-skeleton title row="3" loading="{{ loadding }}">
+          <block>
+            <com-item item="{{d}}" type="{{1}}"></com-item>
+          </block>
+        </van-skeleton>
       </block>
+
     </view>
+
   </view>
-  <van-popup show="{{ showFilter }}" position="bottom" round bind:close="close">
+  <van-popup show="{{ showFilter }}" position="bottom" round bind:close="closeFilter" bind:click-overlay="closeFilter">
     <view class="popup-main">
       <view class="content filter">
-        <view class="top">筛选<u-icon vue-id="{{('3614c1ce-6')+','+('3614c1ce-5')}}" name="close-circle-fill" color="#999" size="40" data-event-opts="{{[['^click',[['closeFilter']]]]}}" bind:click="__e" bind:__l="__l"></u-icon>
+        <view class="top">筛选
+          <van-icon name="clear" class="clear" bind:click="closeFilter" />
         </view>
         <view class="filter-box">
           <view class="name">性别</view>
@@ -51,14 +59,15 @@
         <view class="filter-box">
           <view class="name">结算方式</view>
           <view class="attr">
-            <block wx:for="{{settlementMethods}}" wx:for-item="d" wx:for-index="__i2__" wx:key="value">
-              <view data-event-opts="{{[['tap',[['checkSettle',['$0'],[[['settlementMethods','value',d.value]]]]]]]}}" class="{{['box',(d.checked)?'checked':'']}}" bindtap="__e">{{d.name}}</view>
+            <block wx:for="{{settlementMethods}}" wx:for-item="d">
+              <view class="{{['box',(d.checked)?'checked':'']}}" bindtap="checkSettle" data-item="{{d}}">{{d.name}}
+              </view>
             </block>
           </view>
         </view>
         <view class="btns">
-          <view data-event-opts="{{[['tap',[['closeFilter',['$event']]]]]}}" class="btn" bindtap="__e">重置</view>
-          <view data-event-opts="{{[['tap',[['closeFilter',['$event']]]]]}}" class="btn sure" bindtap="__e">确定</view>
+          <view class="btn" bindtap="closeFilter">重置</view>
+          <view class="btn sure" bindtap="closeFilter">确定</view>
         </view>
       </view>
     </view>

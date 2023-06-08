@@ -48,7 +48,7 @@
 }
 
 .line05::after {
-  content: " ";
+  content: ' ';
   position: absolute;
   left: 0;
   bottom: 0;
@@ -63,7 +63,7 @@
   min-height: 100%;
 }
 
-button[type="save"] {
+button[type='save'] {
   margin-top: 68rpx;
   background: #e32416;
   border-radius: 4px;
@@ -118,10 +118,12 @@ button[type="save"] {
   -webkit-appearance: none;
   background: transparent;
 }
+
 .popup-main {
   height: 820rpx;
   padding: 10rpx 0;
 }
+
 .popup-main .head {
   display: flex;
   height: 60rpx;
@@ -129,16 +131,20 @@ button[type="save"] {
   justify-content: space-between;
   padding: 0 30rpx;
 }
+
 .popup-main .head view {
   color: #333;
   font-size: 24rpx;
 }
+
 .popup-main .head view:last-child {
   color: #3c9cff;
 }
+
 .popup-main .content {
   margin-top: 20rpx;
 }
+
 .popup-main .popup-box {
   display: flex;
   flex-direction: column;
@@ -146,17 +152,21 @@ button[type="save"] {
   position: relative;
   padding: 10rpx 30rpx;
 }
+
 .popup-main .popup-box.checked {
   background-color: #ffd200;
 }
+
 .popup-main .popup-box view {
   font-size: 28rpx;
 }
+
 .popup-main .popup-box text {
   font-size: 24rpx;
   color: #333;
   margin-top: 10rpx;
 }
+
 .popup-main .filter .top {
   display: flex;
   height: 88rpx;
@@ -168,14 +178,17 @@ button[type="save"] {
   font-weight: bold;
   line-height: 50rpx;
 }
-.popup-main .filter .top .u-icon {
+
+.popup-main .filter .top .clear {
   position: absolute;
   right: 30rpx;
   top: 24rpx;
 }
+
 .popup-main .filter .filter-box {
   padding: 20rpx 30rpx;
 }
+
 .popup-main .filter .filter-box .name {
   font-size: 36rpx;
   color: #333;
@@ -183,11 +196,13 @@ button[type="save"] {
   line-height: 50rpx;
   margin-bottom: 36rpx;
 }
+
 .popup-main .filter .filter-box .attr {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
 .popup-main .filter .filter-box .attr .box {
   width: calc(calc(100% - 100rpx) / 3);
   height: 100rpx;
@@ -198,9 +213,11 @@ button[type="save"] {
   text-align: center;
   margin-bottom: 30rpx;
 }
+
 .popup-main .filter .filter-box .attr .box.checked {
   background-color: #ffd200;
 }
+
 .popup-main .filter .btns {
   position: absolute;
   bottom: 54rpx;
@@ -211,6 +228,7 @@ button[type="save"] {
   justify-content: space-between;
   padding: 0 30rpx;
 }
+
 .popup-main .filter .btns .btn {
   color: #ffd200;
   font-size: 36rpx;
@@ -220,6 +238,7 @@ button[type="save"] {
   justify-content: center;
   flex: 1;
 }
+
 .popup-main .filter .btns .btn.sure {
   flex: auto;
   width: 474rpx;
@@ -227,6 +246,7 @@ button[type="save"] {
   border-radius: 12rpx;
   background-color: #ffd200;
 }
+
 page {
   --tc: #ffd200;
   --theam-color: #ffd200;
