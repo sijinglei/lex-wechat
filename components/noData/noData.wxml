@@ -1,0 +1,4 @@
+<view class="noData">
+  <image src="/image/no-data.png"></image>
+  <text>{{ title }}</text>
+</view>

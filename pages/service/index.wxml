@@ -1,0 +1,24 @@
+<view class="work service">
+  <view class="{{['head',(isFixed)?'fixed':'']}}" style="{{'padding-top:'+(statusBar+'px')+';'}}">
+    <image class="logo" src="/image/logo.jpg" mode="aspectFill"></image>
+    <view class="title"><text class="h1">乐享零工</text><text class="txt">随时随地，轻松工作！</text></view>
+  </view>
+  <view class="{{['top-bar',(isFixed)?'fixed':'']}}" style="{{(isFixed?'top:'+(statusBar-9)+'px':'')}}">
+    <view class="content _div">
+      <view class="position service">南山区<uni-icons type="bottom" size="20"></uni-icons>
+      </view>
+      <view class="search" style="{{(isFixed?'margin-right:'+(menuWidth+10)+'px':'')}}" bindtap="toSearch">
+        <uni-icons type="search" size="20"></uni-icons>搜服务
+      </view>
+    </view>
+  </view>
+  <view class="main">
+    <view class="list">
+      <block wx:for="{{list}}" wx:for-item="d">
+        <block>
+          <com-item item="{{d}}" type="{{2}}"></com-item>
+        </block>
+      </block>
+    </view>
+  </view>
+</view>

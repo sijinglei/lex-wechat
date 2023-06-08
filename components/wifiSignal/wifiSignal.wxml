@@ -1,0 +1,18 @@
+<view class="signal-container" style="{{containerStyle}}">
+    <view class="signal" style="{{sizeStyle}}">
+        <view style="width:100%;height:100%;padding:2rpx;background-color: #fff; border-radius: 50%;">
+            <view class="signal-value signal-1 {{signalStrength >= 75 ? 'active' : ''}}" style="{{sizeStyle1}}">
+                <view class="signal-value signal-2 {{signalStrength >= 50 && signalStrength < 75 ? 'active' : ''}}" style="{{sizeStyle2}}">
+                    <view class="signal-value signal-3 {{signalStrength >= 25 && signalStrength < 50 ? 'active' : ''}}" style="{{sizeStyle3}}">
+                        <view class="signal-value signal-4 {{signalStrength >= 0 && signalStrength < 25 ? 'active' : ''}}" style="{{sizeStyle4}}"></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="signal-mask">
+            <view class="mask1"></view>
+            <view class="mask-left"></view>
+            <view class="mask-right"></view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,23 @@
+.publish {
+  padding: 30rpx;
+}
+
+.publish .list-box {
+  background: #ffd200;
+  margin-bottom: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 140rpx;
+  border-radius: 20px;
+  padding: 30rpx 20rpx;
+}
+
+.publish .list-box .left .title {
+  font-size: 36rpx;
+  margin-bottom: 10rpx;
+}
+
+.publish .list-box .left text {
+  font-size: 24rpx;
+}

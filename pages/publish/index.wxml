@@ -1,0 +1,29 @@
+<view class="publish">
+  <view class="list-box" data-type="1" bindtap="doRelease">
+    <view class="left">
+      <view class="title">发布招工</view>
+      <text>您周围有 2813 人等待工作</text>
+    </view>
+    <view class="arrow">
+      <van-icon name="arrow" />
+    </view>
+  </view>
+  <view class="list-box" data-type="2" bindtap="doRelease">
+    <view class="left">
+      <view class="title">发布便民服务</view>
+      <text>您周围有 2813 人等待工作</text>
+    </view>
+    <view class="arrow">
+      <van-icon name="arrow" />
+    </view>
+  </view>
+  <view class="list-box">
+    <view class="left">
+      <view class="title">发布审批</view>
+      <text>您周围有 2813 人等待工作</text>
+    </view>
+    <view class="arrow">
+      <van-icon name="arrow" />
+    </view>
+  </view>
+</view>

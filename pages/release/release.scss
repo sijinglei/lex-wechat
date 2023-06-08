@@ -1,0 +1,26 @@
+.replease {
+  padding: 20rpx 0;
+  background-color: #fff;
+  .label {
+    flex: 1;
+    color: var(--fcolor);
+    font-size: 24rpx;
+    &.tip {
+      font-weight: bold;
+      font-size: 28rpx;
+    }
+  }
+  .item {
+    font-size: 24rpx;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    > text {
+      margin-right: 10rpx;
+    }
+  }
+  button {
+    margin-top: 40rpx;
+    background-color: var(--tc);
+  }
+}

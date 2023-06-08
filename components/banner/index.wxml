@@ -1,0 +1,13 @@
+<!--components/banner/index.wxml-->
+<view class="banner">
+      <swiper class="swiper" indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" easing-function="easeInOutCubic">
+        <block wx:for="{{background}}" wx:key="*this">
+          <swiper-item>
+            <view class="swiper-item">
+              <image class="img-item" src="{{item}}" mode="aspectFill"></image>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+</view>

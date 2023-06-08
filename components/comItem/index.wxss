@@ -1,0 +1,53 @@
+.item-box {
+  min-height: 270rpx;
+  height: auto;
+  overflow: hidden;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 40rpx;
+  margin-bottom: 30rpx;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  color: var(--fcolor);
+}
+
+.item-box .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 32rpx;
+}
+
+.item-box .title .name {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.item-box .title .job-num {
+  color: var(--theam-color);
+}
+
+.item-box .infos {
+  font-size: 24rpx;
+}
+
+.item-box .infos .txt {
+  margin: 4rpx 0;
+}
+
+.item-box .bot {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20rpx;
+}
+
+.item-box .bot button {
+  margin: 0;
+  width: 200rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  background-color: var(--tc);
+  border: none;
+}

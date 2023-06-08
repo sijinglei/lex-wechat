@@ -1,0 +1,78 @@
+<view>
+  <view class="replease">
+    <form catchsubmit="formSubmit">
+      <van-cell-group>
+        <van-cell center>
+          <view slot="title">
+            <view class="label tip">岗位信息</view>
+          </view>
+          <view class="item">
+            <text>是否急招</text>
+            <van-switch name="urgent" checked="{{formData.urgent}}" bind:change="onChange" activeValue="{{1}}"
+              inactiveValue="{{0}}" size="28px" />
+          </view>
+        </van-cell>
+        <van-field name="title" model:value="{{ formData.title }}" placeholder="请输入标题" label="发布标题"
+          input-align="right" />
+        <van-cell title="岗位类型" is-link value="服务员" />
+        <van-cell title="需求人数" input-align="right">
+          <van-stepper name="quantity" value="{{ formData.quantity }}" min="1" integer bind:change="onChangeQuantity" />
+        </van-cell>
+        <van-cell title="性别" input-align="right">
+          <van-radio-group name="sex" value="{{ formData.sex }}" bind:change="onChangeSex" direction="horizontal">
+            <van-radio name="{{1}}" checked-color="#07C160">男</van-radio>
+            <van-radio name="{{2}}" checked-color="#07C160">女</van-radio>
+            <van-radio name="{{3}}" checked-color="#07C160">不限</van-radio>
+          </van-radio-group>
+        </van-cell>
+        <van-field name="title" model:value="{{ formData.title }}" placeholder="不限" label="年龄" input-align="right" />
+        <van-field name="title" model:value="{{ formData.title }}" placeholder="如有其他要求，请填写（非必填）" label=""
+          input-align="left" />
+        <van-field name="title" model:value="{{ formData.title }}" placeholder="请填写工作内容" type="textarea"
+          autosize="{{ {maxHeight: 200+'px', minHeight: 100+'px'} }}" label="工作内容" input-align="left" />
+        <van-field name="title" model:value="{{ formData.title }}" placeholder="请填写工作时间" type="textarea" autosize
+          label="工作时间" input-align="right" />
+        <van-cell center border="{{false}}">
+          <view slot="title">
+            <view class="label tip">位置信息</view>
+          </view>
+        </van-cell>
+        <van-cell title="工作地点" is-link value="{{currentChooseAddr}}" bind:click="chooseAddr" />
+        <van-field name="title" model:value="{{ formData.title }}" placeholder="请填写工作时间" type="textarea" autosize
+          label="详细地址" input-align="right" />
+        <van-cell title="招聘区域" is-link value="南山区" />
+        <van-cell center border="{{false}}">
+          <view slot="title">
+            <view class="label tip">报酬信息</view>
+          </view>
+        </van-cell>
+        <van-cell title="结算方式" is-link value="{{settlementName}}" bind:click="showPopup" />
+        <van-field name="salary" model:value="{{ formData.salary }}" placeholder="请填写薪酬说明" type="textarea" autosize
+          label="薪酬说明" input-align="right" />
+        <van-field name="welfare" model:value="{{ formData.welfare }}" placeholder="请填写福利说明" type="textarea" autosize
+          label="福利说明" input-align="right" />
+        <van-field name="mobile" model:value="{{ formData.mobile }}" type="number" label="联系电话" input-align="right" />
+        <van-field name="weixin" model:value="{{ formData.weixin }}" label="微信" input-align="right" />
+      </van-cell-group>
+      <button class="button" formType="submit">确认并发布</button>
+    </form>
+    <van-popup show="{{ showSettle }}" bind:close="onClose" position="bottom">
+      <van-radio-group value="{{ formData.settlement }}" bind:change="onChangeSettlement">
+        <van-cell-group>
+          <van-cell title="月结" clickable data-name="{{1}}" bind:click="onClickSettlement">
+            <van-radio slot="right-icon" name="{{1}}" />
+          </van-cell>
+          <van-cell title="周结" clickable data-name="{{2}}" bind:click="onClickSettlement">
+            <van-radio slot="right-icon" name="{{2}}" />
+          </van-cell>
+          <van-cell title="日结" clickable data-name="{{3}}" bind:click="onClickSettlement">
+            <van-radio slot="right-icon" name="{{3}}" />
+          </van-cell>
+          <van-cell title="完工结" clickable data-name="{{4}}" bind:click="onClickSettlement">
+            <van-radio slot="right-icon" name="{{4}}" />
+          </van-cell>
+        </van-cell-group>
+      </van-radio-group>
+    </van-popup>
+  </view>
+</view>

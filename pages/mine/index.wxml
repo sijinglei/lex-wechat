@@ -1,0 +1,61 @@
+<view class="work">
+  <view class="head mine" :style="{'padding-top':statusBarHeight+'px'}">
+    <view class="info">
+      <image wx:if="{{wxuserInfo&&wxuserInfo.avatarUrl}}" class="logo" src="{{wxuserInfo.avatarUrl}}" mode="aspectFill">
+      </image>
+      <image wx:else class="logo" src="/image/logo.jpg" mode="aspectFill"></image>
+      <view class="title">
+        <text class="h1">{{(wxuserInfo&&wxuserInfo.nickName)||'--'}}</text>
+        <text class="txt">176****6879</text>
+      </view>
+    </view>
+    <view class="tabs">
+      <view class="tab-box">
+        <text class="num">99</text>
+        <text class="tip">查看</text>
+      </view>
+      <view class="tab-box">
+        <text class="num">2</text>
+        <text class="tip">沟通</text>
+      </view>
+      <view class="tab-box">
+        <text class="num">20</text>
+        <text class="tip">收藏</text>
+      </view>
+    </view>
+  </view>
+  <view class="main">
+    <view class="box">
+      <view class="tip">常用功能</view>
+      <view class="menus">
+        <div class="item">
+          <van-icon name="eye-o" size="24" />
+          <text>我查看的</text>
+        </div>
+        <div class="item">
+          <van-icon name="todo-list-o" size="24" />
+          <text>我发布的</text>
+        </div>
+        <div class="item">
+          <van-icon name="like-o" size="24" />
+          <text>我收藏的</text>
+        </div>
+        <div class="item">
+          <van-icon name="setting-o" size="24" />
+          <text>设置</text>
+        </div>
+        <div class="item">
+          <van-icon name="service-o" size="24" />
+          <text>意见反馈</text>
+        </div>
+      </view>
+    </view>
+  </view>
+  <view class="foot">
+    <button bindtap="logout()">退出登录</button>
+    <view class="copy">
+      <view>客服电话：17665256666 工作时间：9:30-18:30</view>
+      <view>人力资源许可证｜营业执照</view>
+    </view>
+  </view>
+</view>

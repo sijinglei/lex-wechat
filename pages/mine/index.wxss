@@ -1,0 +1,245 @@
+.work .head {
+  background-color: var(--theam-color);
+  display: flex;
+  align-items: center;
+  padding-left: 30rpx;
+  box-sizing: content-box;
+}
+
+.work .head.mine {
+  background: linear-gradient(to bottom, var(--theam-color), #fff);
+  padding-bottom: 20px;
+  flex-direction: column;
+  padding-left: 0;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.work .head.mine .info {
+  display: flex;
+  align-items: center;
+  margin: 0 0 30rpx 30rpx;
+}
+
+.work .head .logo {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+}
+
+.work .head .title {
+  margin-left: 10rpx;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+}
+
+.work .head .title .h1 {
+  font-size: 38rpx;
+}
+
+.work .head .title .txt {
+  font-size: 24rpx;
+  margin-top: 8rpx;
+}
+
+.work .top-bar {
+  width: 100%;
+  background-color: var(--theam-color);
+}
+
+.work .top-bar .content {
+  height: 132rpx;
+  width: calc(100% - 40rpx);
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.work .top-bar .position {
+  flex: 0.8;
+  box-sizing: border-box;
+}
+
+.work .top-bar .search {
+  flex: 1.4;
+  height: 78rpx;
+  border-radius: 44rpx;
+  background-color: #fff8c8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: var(--fcolor);
+  box-sizing: border-box;
+}
+
+.work .top-bar .search .van-icon {
+  font-size: 36rpx !important;
+  margin-right: 8rpx;
+}
+
+.work .top-bar .qiuzhi {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0.8;
+}
+
+.work .top-bar .qiuzhi .lingdang {
+  width: 32rpx;
+  height: 32rpx;
+  margin: 0 8rpx;
+}
+
+.work .top-bar .qiuzhi .yx {
+  color: var(--fcolor);
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+}
+
+.work .main {
+  padding: 20rpx 30rpx;
+  height: 100vh;
+  position: relative;
+}
+
+.work .main .fillters {
+  display: flex;
+  height: 80rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.work .main .fillters .left {
+  display: flex;
+  align-items: center;
+}
+
+.work .main .fillters .left view {
+  color: #888;
+  padding: 6rpx 0;
+  position: relative;
+}
+
+.work .main .fillters .left view.active {
+  color: var(--fcolor);
+}
+
+.work .main .fillters .left view.active::after {
+  position: absolute;
+  content: '';
+  display: block;
+  bottom: 0;
+  left: 0;
+  height: 2rpx;
+  background: var(--theam-color);
+  width: 100%;
+}
+
+.work .main .fillters .left view + view {
+  margin-left: 20rpx;
+}
+
+.work .main .list {
+  height: calc(100% - 80rpx - 190rpx);
+  overflow-y: auto;
+}
+
+.work .main .list .list-box {
+  height: 330rpx;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 40rpx;
+  margin-bottom: 30rpx;
+}
+
+.tabs {
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.tabs .tab-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabs .tab-box .num {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.tabs .tab-box .tip {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.work .main {
+  padding: 40rpx 30rpx 0;
+  height: auto;
+}
+
+.work .main .box {
+  border-radius: 24rpx;
+  background-color: #f8f8f8;
+  padding: 20rpx;
+  box-sizing: content-box;
+}
+
+.work .main .box .tip {
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+
+.work .main .box .menus {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.work .main .box .menus .item {
+  width: calc(100% / 4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20rpx 0;
+}
+
+.work .main .box .menus .item text {
+  font-size: 24rpx;
+  color: #666;
+  margin-top: 10rpx;
+}
+
+.foot {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding-bottom: 40rpx;
+}
+
+.foot button {
+  margin-top: 40rpx;
+  color: #444;
+}
+
+.foot .copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 40rpx;
+}

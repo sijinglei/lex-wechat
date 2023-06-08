@@ -1,0 +1,8 @@
+{
+    "navigationStyle": "custom",
+    "enablePullDownRefresh": false,
+    "usingComponents": {
+        "banner": "/components/banner/index",
+        "wifi-signal": "/components/wifiSignal/wifiSignal"
+    }
+}

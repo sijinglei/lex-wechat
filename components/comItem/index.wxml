@@ -1,0 +1,16 @@
+<block wx:if="{{item}}">
+  <view class="item-box">
+    <view class="title">
+      <view class="name">{{''+item.title+''}}<text class="hot">急招</text></view>
+      <view class="job-num">招5人</view>
+    </view>
+    <view class="infos">
+      <view class="txt add">南山区·世界之窗 | 距您2.3公里</view>
+      <view class="txt">薪酬：日结，每天100元</view>
+      <view class="txt">要求：性别不限，年龄不限，需求会刷盘子，待客热情</view>
+    </view>
+    <block wx:if="{{type==1}}">
+      <view class="bot"><button type="default" bindtap="toDetail">查看详情</button></view>
+    </block>
+  </view>
+</block>

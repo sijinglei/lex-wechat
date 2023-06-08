@@ -1,0 +1,40 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- <view class="userinfo">
+    <block wx:if="{{canIUseOpenData}}">
+      <view class="userinfo-avatar" bindtap="bindViewTap">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <open-data type="userNickName"></open-data>
+    </block>
+    <block wx:elif="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+     <view>{{userInfo.nickName}}</view>
+    </block>
+  </view> -->
+  <!-- 广告位 -->
+  <banner />
+  <view class="wifi-content">
+  当前位置：{{currentAddress}}
+      <view class="btn-txt flex-r center" bindtap="getWifis">
+        点击获取附近Wi-Fi列表
+      </view>   
+       <scroll-view  wx:if="{{wifiList.length>0}}" class="wifi-scroll" scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll"  scroll-top="{{scrollTop}}">
+        <!-- <view class="wifi-box line05">
+           <view class="name">AAA</view>
+          <wifi-signal signalStrength="30"></wifi-signal>
+        </view> -->
+        <view class="wifi-box line05" wx:for="{{wifiList}}" wx:for-item="d" data-item="{{d}}" bindtap="onConnectWifi">
+           <view class="name"> {{d.SSID}}</view>
+          <wifi-signal signalStrength="{{d.strength}}"></wifi-signal>
+        </view>
+       </scroll-view>
+       <no-data wx:else />
+    </view>
+    <van-toast id="van-toast"></van-toast>
+</view>
