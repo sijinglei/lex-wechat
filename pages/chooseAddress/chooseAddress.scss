@@ -14,6 +14,7 @@
 }
 
 .left {
+  // padding-top: 40rpx;
   width: 180rpx;
   margin-right: 24rpx;
   background-color: #fff;
@@ -46,12 +47,14 @@
 .right {
   flex: 1;
   background: #f2f2f2;
+  // padding-top: 30rpx;
   /* padding: 0 20rpx; */
 }
 
 .right-classify-title {
   font-size: 28rpx;
   color: #23292f;
+  // background-color: #F2F2F2;
   font-weight: bold;
   height: 80rpx;
   line-height: 80rpx;

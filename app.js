@@ -18,6 +18,7 @@ App({
         console.log('用户字体大小:', res.fontSizeSetting)
         console.log('客户端基础库版本 :', res.SDKVersion)
         console.log('设备性能等级:', res.benchmarkLevel)
+        this.globalData.windowHeight = res.windowHeight // 内容高度
         this.globalData.statusBar = res.statusBarHeight // 状态拦高度
         this.globalData.customBar = res.statusBarHeight + 45 // 状态栏高度 + 导航栏高度
         let locationEnabled = res.locationEnabled //判断手机定位服务是否开启
@@ -41,6 +42,7 @@ App({
   globalData: {
     statusBar: 0,
     customBar: 0,
+    windowHeight: 0,
     userInfo: null,
     mapSDKKey: 'NCQBZ-GWGRM-D5L6S-6W73R-JOCMV-OTBR7', //地图SDKkey
   },

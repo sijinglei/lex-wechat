@@ -1,4 +1,4 @@
-<block wx:if="{{!item}}">
+<block wx:if="{{item}}">
   <view class="item-box">
     <view class="title">
       <view class="name">{{''+item.title+''}}<text class="hot">急招</text></view>

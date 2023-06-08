@@ -79,7 +79,7 @@ Page({
     isFixed: false,
     latitude: '',
     longitude: '',
-    loadding: false,
+    loadding: true,
   },
 
   /**
@@ -111,6 +111,19 @@ Page({
       statusBar: app.globalData.statusBar,
       customBar: app.globalData.customBar,
     })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {},
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+    console.log('show')
+    let that = this
     qqmapsdk = new QQMapWX({
       key: app.globalData.mapSDKKey, //腾讯位置服务key
     })
@@ -123,7 +136,6 @@ Page({
         success(res) {
           if (res.status == 0) {
             let data = res.result
-            console.log(data)
             that.setData({
               currentAddress: data.address_component.district,
             })
@@ -149,24 +161,22 @@ Page({
           getAddress({ latitude, longitude })
         },
       })
+    } else {
+      that.setData({
+        currentAddress: address,
+      })
     }
     // 生生模拟数据
-    // let rows = that.initData(20)
-    // that.setData({
-    //   list: rows,
-    // })
-    this.getList()
+    let rows = that.initData(20)
+
+    setTimeout(() => {
+      that.setData({
+        list: rows,
+        loadding: false,
+      })
+    }, 2000)
+    // this.getList()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {},
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -341,14 +351,19 @@ Page({
       ...queryParams,
       ...this.data.pageParams,
     }
-    utils.get(api, query).then(res => {
-      console.log('请求返回数据', res)
-    })
+    utils
+      .get(api, query)
+      .then(res => {
+        console.log('请求返回数据', res)
+        this.setData({
+          loadding: false,
+        })
+        wx.hideLoading()
+      })
+      .catch(err => {
+        wx.hideLoading()
+      })
     // this.list = this.rowData.filter(d => d.type == this.currentId)
-    wx.hideLoading()
-    this.setData({
-      loadding: false,
-    })
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作

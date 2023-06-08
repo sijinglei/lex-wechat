@@ -1,2 +1,37 @@
-<!--pages/chooseAddress/chooseAddress.wxml-->
-<text>pages/chooseAddress/chooseAddress.wxml</text>
+<view class="container" style="height:{{scrollHeight}}px">
+  <view class='content'>
+    <view class="current-address">
+      当前选中位置：<text>{{currentAddress}}</text>
+    </view>
+    <view class="box">
+      <view class="left">
+        <scroll-view :scroll-y="true" style="height:{{(scrollHeight - 50)}}px" :scroll-top="scrollTopLeft">
+          <view wx:for="{{provinces}}" data-index="{{index}}" data-id="{{item.id}}" wx:key="item.code"
+            bindtap="toScrollView">
+            <view class="left-item {{selectedSub==index?'left-active':''}}">
+              <text>{{item.name}}</text>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+      <view class="right">
+        <!-- <van-search background="#F2F2F2" value="{{ keyWord }}" placeholder="请输入搜索关键词" /> -->
+        <scroll-view scroll-y="{{true}}" style="height:{{(scrollHeight - 50)}}px" :scroll-into-view="toView"
+          scroll-top="0" scroll="scrollTo" scroll-with-animation>
+          <view wx:for="{{citys}}" wx:key="item.code" id="position{{index}}">
+            <view class="right-item">
+              <view class="right-classify-title">{{item.name}}</view>
+              <view class="list">
+                <block wx:for="{{item.areas}}" wx:for-item="d" wx:key="d.code">
+                  <view class="item" data-id="{{d.id}}" data-name="{{d.name}}" bindtap="itemHandleClick">
+                    <text>{{d.name}}</text>
+                  </view>
+                </block>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+</view>

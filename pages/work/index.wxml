@@ -30,15 +30,13 @@
     </view>
 
     <view class="list" bindtouchstart="touchStart" bindtouchend="touchEnd" animation="{{animationData}}">
-
-      <block wx:for="{{5}}" wx:for-item="d">
-        <van-skeleton title row="3" loading="{{ loadding }}">
+      <van-skeleton title row="3" loading="{{ loadding }}">
+        <block wx:for="{{list}}" wx:for-item="d">
           <block>
             <com-item item="{{d}}" type="{{1}}"></com-item>
           </block>
-        </van-skeleton>
-      </block>
-
+        </block>
+      </van-skeleton>
     </view>
 
   </view>

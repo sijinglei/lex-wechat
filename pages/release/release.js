@@ -1,3 +1,5 @@
+const util = require('../../utils/util')
+
 // pages/release/release.js
 Page({
   /**
@@ -5,7 +7,7 @@ Page({
    */
   data: {
     showGw: false,
-    currentJobItem: '',
+    currentJobItem: null,
     currentJobName: '',
     formData: {
       id: '',
@@ -46,6 +48,7 @@ Page({
     this.setData({
       settlementName: name,
     })
+    this.getGwList() // 获取岗位列表
   },
 
   /**
@@ -62,6 +65,43 @@ Page({
     // 需要手动对 checked 状态进行更新
     this.setData({
       'formData.urgent': detail,
+    })
+  },
+  getGwList() {
+    util.get('/app/dictionary/queryByType', { type: 'jobType' }).then(res => {
+      this.setData({
+        gwList: res.items,
+      })
+    })
+  },
+  ok(e) {
+    let d = e.currentTarget.dataset.item
+    this.setData({
+      currentJobItem: d,
+    })
+  },
+  openGw() {
+    let code = this.data.formData.type ? this.data.formData.type : null
+    if (code) {
+      let item = this.data.gwList.find(d => d.code == code)
+      this.setData({
+        currentJobItem: item,
+      })
+    }
+    this.setData({
+      showGw: true,
+    })
+  },
+  closeGw() {
+    this.setData({
+      showGw: false,
+    })
+  },
+  sureGw() {
+    this.setData({
+      'formData.type': this.data.currentJobItem.code,
+      currentJobName: this.data.currentJobItem.value,
+      showGw: false,
     })
   },
   onChangeQuantity({ detail }) {
@@ -99,9 +139,14 @@ Page({
     console.log('form', e)
     console.log('formData', this.data.formData)
   },
-  showPopup() {
+  showPopupSettle() {
     this.setData({
       showSettle: true,
+    })
+  },
+  onCloseSettle() {
+    this.setData({
+      showSettle: false,
     })
   },
   chooseAddr() {
@@ -119,6 +164,11 @@ Page({
           'formData.address': res.name,
         })
       },
+    })
+  },
+  chooseArea() {
+    wx.navigateTo({
+      url: '/pages/chooseAddress/chooseAddress',
     })
   },
   /**
