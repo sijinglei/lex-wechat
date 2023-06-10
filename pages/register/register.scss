@@ -1,0 +1,20 @@
+@import '../login/login.scss';
+.logo {
+  margin: 140rpx auto !important;
+  width: 200rpx !important;
+  height: 200rpx !important;
+}
+
+.register-main {
+  padding: 0 30rpx;
+}
+
+.hasuser {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80rpx;
+  color: #ccc;
+  text-decoration: underline;
+  padding: 4rpx;
+}

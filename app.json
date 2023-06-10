@@ -12,6 +12,7 @@
     "pages/release/release",
     "pages/releaseService/releaseService",
     "pages/login/login",
+    "pages/phoneLogin/phoneLogin",
     "pages/register/register",
     "pages/success/success"
   ],
@@ -24,7 +25,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#FFD200",
-    "navigationBarTitleText": "乐享wifi",
+    "navigationBarTitleText": "乐享零工",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#EFEFEF",
     "enablePullDownRefresh": true
@@ -79,6 +80,7 @@
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-uploader": "@vant/weapp/uploader/index",
     "van-field": "@vant/weapp/field/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
     "van-radio": "@vant/weapp/radio/index",
     "van-radio-group": "@vant/weapp/radio-group/index",
     "van-popup": "@vant/weapp/popup/index",

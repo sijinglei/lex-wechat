@@ -103,24 +103,28 @@ function request(
               //错误
               wx.showModal({
                 title: '提示',
-                confirmText: data.code == 1203 ? '去注册' : '确定',
+                confirmText: data.code == 100 ? '去注册' : '确定',
                 content: data.msg,
                 success(res) {
                   if (res.confirm) {
                     console.log('用户点击确定')
-                    if (data.code == 1203) {
+                    if (data.code == 100) {
                       wx.navigateTo({
-                        url: '/pages/register/index',
+                        url: '/pages/register/register',
+                      })
+                    } else {
+                      wx.navigateTo({
+                        url: '/pages/login/login',
                       })
                     }
                     wx.hideLoading()
                   } else if (res.cancel) {
                     console.log('用户点击取消')
-                    if (data.msg == '文章不存在') {
-                      wx.navigateBack({
-                        delta: 1, //返回上一个页面
-                      })
-                    }
+                    // if (data.msg == '文章不存在') {
+                    //   wx.navigateBack({
+                    //     delta: 1, //返回上一个页面
+                    //   })
+                    // }
                   }
                 },
               })
@@ -144,7 +148,7 @@ function request(
                 console.log('用户点击确定')
 
                 wx.navigateTo({
-                  url: '/pages/login/index',
+                  url: '/pages/login/login',
                 })
               } else if (res.cancel) {
                 console.log('用户点击取消')

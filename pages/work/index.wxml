@@ -1,6 +1,5 @@
 <view class="work">
-  <view class="{{['head',(isFixed)?'fixed':'']}}"
-    style="{{'padding-top:'+(statusBar+'px')+';'+('height:'+((!isFixed?customBar:0)+'px')+';')}}">
+  <view class="head {{isFixed?'fixed':''}}" style="padding-top:{{statusBar}}px;height:{{!isFixed?customBar:0}}px;">
     <image class="logo" src="/image/logo.jpg" mode="aspectFill"></image>
     <view class="title"><text class="h1">乐享零工</text><text class="txt">随时随地，轻松工作！</text></view>
   </view>

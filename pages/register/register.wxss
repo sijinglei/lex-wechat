@@ -1,1 +1,140 @@
-/* pages/register/register.wxss */
+.reg-log {
+  padding: 0;
+  position: relative;
+}
+
+.reg-log .top-bg {
+  width: 100vw;
+  height: 480rpx;
+  background: linear-gradient(#ee3f4d, var(--theam-color));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 50% 50%;
+  transform: scale(1.5);
+}
+
+.reg-log .logo {
+  width: 144rpx;
+  height: 144rpx;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.reg-log .h2 {
+  z-index: 2;
+  font-size: 40rpx;
+  margin-top: 140rpx;
+  font-weight: bold;
+  padding: 0 30rpx;
+  text-align: center;
+}
+
+.reg-log .h2 text {
+  color: var(--theam-color);
+}
+
+.reg-log .quanyi {
+  width: calc(100% - 60rpx);
+  margin: 40rpx auto 0;
+  background-color: #f9f9f9;
+  border-radius: 12rpx;
+  height: 200rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reg-log .quanyi .box {
+  width: calc(calc(100% - 40rpx) / 3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.reg-log .quanyi .box text {
+  margin-top: 10rpx;
+}
+
+.reg-log .login-main {
+  padding: 0 30rpx;
+  position: absolute;
+  bottom: 100rpx;
+  left: 0;
+}
+
+.reg-log button {
+  margin-top: 40rpx;
+}
+
+.reg-log button.text {
+  border: 0;
+  background-color: transparent;
+  color: var(--theam-color);
+}
+
+.reg-log .xieyi {
+  margin-top: 80rpx;
+}
+
+.reg-log .xieyi .van-checkbox__label {
+  color: #999;
+}
+
+.reg-log .xieyi text {
+  color: #1989fa;
+}
+
+.doudong {
+  animation: move 1s 0s 1;
+  transform-origin: bottom;
+}
+
+@keyframes move {
+  0%,
+  65% {
+    transform: translateX(0) rotate(0deg);
+  }
+  70% {
+    transform: translateX(5px) rotate(6deg);
+  }
+  75% {
+    transform: translateX(-5px) rotate(-6deg);
+  }
+  80% {
+    transform: translateX(5px) rotate(6deg);
+  }
+  85% {
+    transform: translateX(-5px) rotate(-6deg);
+  }
+  90% {
+    transform: translateX(5px) rotate(6deg);
+  }
+  95% {
+    transform: translateX(-5px) rotate(-6deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
+.logo {
+  margin: 140rpx auto !important;
+  width: 200rpx !important;
+  height: 200rpx !important;
+}
+
+.register-main {
+  padding: 0 30rpx;
+}
+
+.hasuser {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80rpx;
+  color: #ccc;
+  text-decoration: underline;
+  padding: 4rpx;
+}

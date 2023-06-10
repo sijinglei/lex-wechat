@@ -1,0 +1,15 @@
+<view class="form-main reg-log">
+  <form catchsubmit="login">
+    <image class="logo" src="/image/logo.jpg" mode="aspectFit"></image>
+    <view class="form-group line05">
+      <input name="mobile" type="number" focus maxlength="11" placeholder="请输入您的手机号码" />
+    </view>
+    <view class="form-group line05">
+      <input name="password" password type="text" placeholder="请输入您的登录密码" />
+    </view>
+
+    <button type="save" form-type="submit">登录</button>
+    <button type="save" bindtap="register">去注册</button>
+  </form>
+  <van-toast id="msg-toast" />
+</view>

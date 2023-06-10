@@ -1,0 +1,5 @@
+<view class="left-back" style="top:{{top}}" bindtap="goBack">
+  <view class="left-arrow">
+    <van-icon name="arrow-left" />
+  </view>
+</view>

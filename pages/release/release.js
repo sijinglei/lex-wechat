@@ -1,5 +1,5 @@
 const util = require('../../utils/util')
-
+import Toast from '@vant/weapp/toast/toast'
 // pages/release/release.js
 Page({
   /**
@@ -27,6 +27,7 @@ Page({
       address: '',
       longitude: '', // 经度
       latitude: '', //纬度
+      area: '', // 招聘区域
     },
     gwList: [],
     currentChooseAddr: '',
@@ -39,9 +40,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    wx.setNavigationBarTitle({
-      title: '发布招工',
-    })
     let type = this.data.formData.settlement
     let name =
       type == 1 ? '月结' : type == 2 ? '周结' : type == 3 ? '日结' : '完工结'
@@ -59,9 +57,15 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {},
+  onShow() {
+    let area = wx.getStorageSync('ZP_AREA') || ''
+    if (area) {
+      this.setData({
+        'formData.area': area,
+      })
+    }
+  },
   onChange({ detail }) {
-    console.log(detail)
     // 需要手动对 checked 状态进行更新
     this.setData({
       'formData.urgent': detail,
@@ -135,9 +139,69 @@ Page({
       showSettle: false,
     })
   },
+  showErrMsg(msg) {
+    Toast({ message: msg, selector: '#msg-toast' })
+    return
+  },
   formSubmit(e) {
     console.log('form', e)
     console.log('formData', this.data.formData)
+    let formData = this.data.formData
+    let values = e.detail.value
+    let d = Object.assign(formData, values)
+
+    if (d.title == '') {
+      this.showErrMsg('标题不能为空')
+      return
+    }
+    if (d.age == '') {
+      this.showErrMsg('年龄不能为空')
+      return
+    }
+    if (d.content == '') {
+      this.showErrMsg('工作内容不能为空')
+      return
+    }
+    if (d.jobTime == '') {
+      this.showErrMsg('工作时间不能为空')
+      return
+    }
+    if (d.mobile == '') {
+      this.showErrMsg('手机号不能为空')
+      return
+    }
+    if (!/^1[3456789]\d{9}$/.test(d.mobile)) {
+      this.showErrMsg('手机号码格式错误')
+      return
+    }
+    if (d.address == '') {
+      this.showErrMsg('详细地址不能为空')
+      return
+    }
+    if (d.salary == '') {
+      this.showErrMsg('薪酬说明不能为空')
+      return
+    }
+    if (d.welfare == '') {
+      this.showErrMsg('福利说明不能为空')
+      return
+    }
+    if (d.latitude == '') {
+      this.showErrMsg('工作地点不能为空')
+      return
+    }
+    if (d.area == '') {
+      this.showErrMsg('招聘区域不能为空')
+      return
+    }
+    console.log('dddd=', d)
+    util.post('/app/job', d).then(res => {
+      console.log('')
+      Toast.success('发布成功')
+      wx.redirectTo({
+        url: '/pages/success/success',
+      })
+    })
   },
   showPopupSettle() {
     this.setData({
@@ -168,7 +232,9 @@ Page({
   },
   chooseArea() {
     wx.navigateTo({
-      url: '/pages/chooseAddress/chooseAddress',
+      url:
+        '/pages/chooseAddress/chooseAddress?type=2&address=' +
+        this.data.formData.area,
     })
   },
   /**

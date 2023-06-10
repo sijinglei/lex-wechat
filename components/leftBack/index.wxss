@@ -1,0 +1,16 @@
+.left-back {
+  position: absolute;
+  left: 30rpx;
+  z-index: 88;
+}
+
+.left-arrow {
+  width: 48rpx;
+  height: 48rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}

@@ -19,8 +19,8 @@
       }
     }
     .logo {
-      width: 88rpx;
-      height: 88rpx;
+      width: 80rpx;
+      height: 80rpx;
       border-radius: 50%;
     }
     .title {
@@ -29,31 +29,55 @@
       display: flex;
       flex-direction: column;
       .h1 {
-        font-size: 38rpx;
+        font-size: 36rpx;
       }
       .txt {
         font-size: 24rpx;
-        margin-top: 8rpx;
+        margin-top: 4rpx;
+      }
+    }
+    &.fixed {
+      position: fixed;
+      z-index: 3;
+      top: 0;
+      width: 100%;
+      left: 0;
+      transition: all 0.4s;
+      .logo,
+      .title {
+        display: none;
       }
     }
   }
   .top-bar {
-    // position: fixed;
+    height: 100rpx;
+    display: flex;
+    align-items: center;
     width: 100%;
     background-color: var(--theam-color);
     // z-index: 2;
     .content {
-      height: 132rpx;
-      width: calc(100% - 40rpx);
+      height: 90rpx;
+      width: calc(100% - 36rpx);
       padding: 0 20rpx;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
+    &.fixed {
+      position: fixed;
+      z-index: 3;
+      // .content{
+      // 	height: 88rpx;
+      // }
+    }
     .position {
       // width: 178rpx;
       flex: 0.8;
       box-sizing: border-box;
+      &.service {
+        flex: 0.6;
+      }
     }
     .search {
       // width: 332rpx;
@@ -88,17 +112,37 @@
         display: flex;
         align-items: center;
       }
+      &.fixed {
+        opacity: 0;
+      }
+    }
+  }
+  &.service {
+    .top-bar.fixed {
+      transform: all 0.4s;
+      .content {
+        justify-content: flex-start;
+      }
     }
   }
   .main {
+    // overflow: hidden;
+    // height: calc(100vh - 140rpx);
+    // padding: 140rpx 30rpx 20rpx;
     padding: 20rpx 30rpx;
-    height: 100vh;
     position: relative;
     .fillters {
       display: flex;
       height: 80rpx;
       align-items: center;
       justify-content: space-between;
+      &.fixed {
+        position: fixed;
+        width: calc(100% - 58rpx);
+        left: 30rpx;
+        background-color: #efefef;
+        z-index: 2;
+      }
       .left {
         display: flex;
         align-items: center;
@@ -108,6 +152,7 @@
           position: relative;
           &.active {
             color: var(--fcolor);
+            font-weight: bold;
             &::after {
               position: absolute;
               content: '';
@@ -123,17 +168,6 @@
             margin-left: 20rpx;
           }
         }
-      }
-    }
-    .list {
-      height: calc(100% - 80rpx - 190rpx);
-      overflow-y: auto;
-      .list-box {
-        height: 330rpx;
-        width: 100%;
-        background-color: #fff;
-        border-radius: 40rpx;
-        margin-bottom: 30rpx;
       }
     }
   }

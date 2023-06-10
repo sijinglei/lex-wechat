@@ -1,4 +1,6 @@
 {
+  "navigationBarTitleText": "发布零工",
+  "enablePullDownRefresh": false,
   "usingComponents": {
     "van-stepper": "@vant/weapp/stepper/index"
   }

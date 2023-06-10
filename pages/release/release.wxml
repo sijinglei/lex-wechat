@@ -8,8 +8,8 @@
           </view>
           <view class="item">
             <text>是否急招</text>
-            <van-switch name="urgent" checked="{{formData.urgent}}" bind:change="onChange" activeValue="{{1}}"
-              inactiveValue="{{0}}" size="28px" />
+            <van-switch checked="{{formData.urgent}}" bind:change="onChange" activeValue="{{1}}" inactiveValue="{{0}}"
+              size="28px" />
           </view>
         </van-cell>
         <van-field name="title" value="{{ formData.title }}" placeholder="请输入标题" required label="发布标题"
@@ -40,7 +40,7 @@
         <van-cell title="工作地点" is-link value="{{currentChooseAddr}}" bind:click="chooseAddr" />
         <van-field name="address" required value="{{ formData.address }}" placeholder="请填详细地址" type="textarea" autosize
           label="详细地址" input-align="right" />
-        <van-cell title="招聘区域" is-link value="南山区" bind:click="chooseArea" />
+        <van-cell title="招聘区域" is-link value="{{formData.area||'选择区域'}}" bind:click="chooseArea" />
         <van-cell center border="{{false}}">
           <view slot="title">
             <view class="label tip">报酬信息</view>
@@ -54,7 +54,9 @@
         <van-field name="mobile" value="{{ formData.mobile }}" type="number" label="联系电话" input-align="right" />
         <van-field name="weixin" value="{{ formData.weixin }}" label="微信" input-align="right" />
       </van-cell-group>
-      <button class="button" formType="submit">确认并发布</button>
+      <view class="bot-btns">
+        <button class="button" type="save" formType="submit">确认并发布</button>
+      </view>
     </form>
     <van-popup show="{{ showSettle }}" bind:close="onCloseSettle" position="bottom">
       <van-radio-group value="{{ formData.settlement }}" bind:change="onChangeSettlement">
@@ -90,5 +92,6 @@
         </view>
       </view>
     </van-popup>
+    <van-toast id="msg-toast" />
   </view>
 </view>

@@ -40,6 +40,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {},
+  toLogin() {
+    wx.redirectTo({
+      url: '/pages/login/login',
+    })
+  },
   logout() {
     wx.clearStorageSync()
     wx.navigateTo({

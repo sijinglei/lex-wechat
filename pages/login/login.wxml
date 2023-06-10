@@ -1,2 +1,33 @@
-<!--pages/login/login.wxml-->
-<text>pages/login/login.wxml</text>
+<view class="form-main reg-log">
+  <leftBack />
+  <view class="top-bg">
+    <image class="logo" src="/image/logo.jpg" mode="aspectFit"></image>
+  </view>
+  <view class="h2">立即登陆，享受 <text>乐享</text>会员权益 </view>
+  <view class="quanyi">
+    <view class="box">
+      <van-icon name="friends-o" size="28" />
+      <text>找零工</text>
+    </view>
+    <view class="box">
+      <van-icon name="send-gift-o" size="28" />
+      <text>找服务</text>
+    </view>
+    <view class="box">
+      <van-icon name="gem-o" size="28" />
+      <text>发布</text>
+    </view>
+  </view>
+  <view class="login-main">
+    <button wx:if="{{checked}}" type="save" open-type="getPhoneNumber" bindgetphonenumber="author">微信一键登陆</button>
+    <button wx:else type="save" bindtap="author">微信一键登陆</button>
+    <button class="text" bindtap="loginPhone">手机号码登陆</button>
+    <view class="xieyi {{isDd?'doudong':''}}">
+      <van-checkbox value="{{ checked }}" bind:change="onChangeArgeen">
+        我已认真阅读并同意<text>《用户协议》</text>与<text>《隐私条款》</text>
+      </van-checkbox>
+    </view>
+  </view>
+
+  <van-toast id="msg-toast" />
+</view>

@@ -19,8 +19,30 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {},
-
+  isLogin() {
+    let token = wx.getStorageSync('token')
+    if (!token) {
+      wx.showModal({
+        title: '未登录提醒',
+        content: '您还没有登陆，请先登录，否则无法正常使用',
+        success(res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+            wx.navigateTo({
+              url: '/pages/login/login',
+            })
+          }
+          return false
+        },
+      })
+      return false
+    }
+    return true
+  },
   doRelease(e) {
+    if (!this.isLogin()) {
+      return
+    }
     let type = e.currentTarget.dataset.type
     let url = '/pages/release/release'
     if (type == 2) {

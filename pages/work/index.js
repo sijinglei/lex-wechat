@@ -124,43 +124,11 @@ Page({
   onShow() {
     console.log('show')
     let that = this
-    qqmapsdk = new QQMapWX({
-      key: app.globalData.mapSDKKey, //腾讯位置服务key
-    })
-
-    const getAddress = location => {
-      qqmapsdk.reverseGeocoder({
-        location: location,
-        coord_type: 1,
-        sig: app.globalData.mapSDKKey,
-        success(res) {
-          if (res.status == 0) {
-            let data = res.result
-            that.setData({
-              currentAddress: data.address_component.district,
-            })
-          } else {
-            console.log('获取失败')
-          }
-        },
-      })
-    }
     let address = wx.getStorageSync('address')
+    that.setData({
+      currentAddress: address,
+    })
     if (!address) {
-      wx.getLocation({
-        type: 'wgs84',
-        success(res) {
-          const latitude = res.latitude
-          const longitude = res.longitude
-          // const speed = res.speed
-          // const accuracy = res.accuracy
-          that.setData({
-            latitude: res.latitude,
-            longitude: res.longitude,
-          })
-          getAddress({ latitude, longitude })
-        },
-      })
     } else {
       that.setData({
         currentAddress: address,
@@ -175,7 +143,7 @@ Page({
         loadding: false,
       })
     }, 2000)
-    // this.getList()
+    this.getList()
   },
 
   /**
@@ -309,30 +277,7 @@ Page({
       }
     }
   },
-  /**
-   * 右移，向左滑动操作
-   * */
-  move2left() {
-    let status = Number(this.data.currentId)
-    if (status === 3) {
-      //最右，不移动
-      return
-    }
-    this.getList()
-    //....移动成功，执行方法
-  },
-  /**
-   * 左移，向右滑动操作
-   * */
-  move2right() {
-    let status = Number(this.data.currentId)
-    if (status === 1) {
-      //最左，不移动
-      return
-    }
-    this.getList()
-    //....移动成功，执行方法
-  },
+
   getList() {
     wx.showLoading()
     this.setData({
@@ -377,6 +322,7 @@ Page({
    */
   onReachBottom() {
     console.log('上拉加载更多。。。')
+
     if (this.data.rowData.length >= this.data.total)
       return wx.showToast('数据加载完毕')
     if (this.data.isloading) return

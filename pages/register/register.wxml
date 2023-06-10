@@ -1,2 +1,28 @@
-<!--pages/register/register.wxml-->
-<text>pages/register/register.wxml</text>
+<view class="form-main reg-log">
+  <image class="logo" src="/image/logo.jpg" mode="aspectFit"></image>
+  <view class="register-main">
+    <form catchsubmit="login">
+      <view class="form-group line05">
+        <input name="mobile" type="number" value="{{mobile}}" placeholder="请输入您的手机号码" />
+      </view>
+      <view class="form-group line05">
+        <input name="name" type="text" value="{{name}}" placeholder="请输入用户名" />
+      </view>
+      <view class="form-group line05">
+        <input name="password" password type="text" value="{{password}}" placeholder="请输入登录密码" />
+      </view>
+      <view class="form-group line05">
+        <input name="password2" password type="text" value="{{password2}}" placeholder="请确认登录密码" />
+      </view>
+      <view class="form-group line05">
+        <input name="validateCode" id="codeField" type="number" value="{{validateCode}}" placeholder="请输入短信验证码" />
+        <text class="yzm" wx:if="{{isShowYan}}" bindtap="getSmsCode">获取验证码</text>
+        <text class="yzm" wx:else>{{countTime}}S</text>
+      </view>
+
+      <button type="save" bindtap="register">注册</button>
+      <view class="hasuser" bindtap="toLogin">已有账号，去登录</view>
+    </form>
+  </view>
+  <van-toast id="msg-toast" />
+</view>

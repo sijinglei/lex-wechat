@@ -18,6 +18,7 @@ Page({
     countys: [], // areaList.county_list,
     currentAddress: '',
     scrollHeight: 0,
+    type: 1,
   },
 
   /**
@@ -26,11 +27,14 @@ Page({
   onLoad(options) {
     this.setData({
       scrollHeight: app.globalData.windowHeight,
+      currentAddress: options.address || '',
     })
-    this.data.currentAddress = options.address || ''
     wx.setNavigationBarTitle({
       title: '位置选择',
     })
+    if (options.type && options.type == 2) {
+      this.data.type = options.type
+    }
     this.getData()
   },
   async getData() {
@@ -89,7 +93,11 @@ Page({
   },
   itemHandleClick(e) {
     let { name, id } = e.currentTarget.dataset
-    wx.setStorageSync('address', name)
+    if (this.data.type == 2) {
+      wx.setStorageSync('ZP_AREA', name)
+    } else {
+      wx.setStorageSync('address', name)
+    }
     this.setData({
       currentAddress: name,
     })

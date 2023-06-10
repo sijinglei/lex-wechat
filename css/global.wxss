@@ -1,3 +1,11 @@
+page {
+  --tc: #ffd200;
+  --theam-color: #ffd200;
+  --fcolor: #333333;
+  --ww: 0.872;
+  background-color: #efefef;
+}
+
 /* 省略号 */
 
 .ell {
@@ -64,8 +72,7 @@
 }
 
 button[type='save'] {
-  margin-top: 68rpx;
-  background: #e32416;
+  background-color: var(--tc);
   border-radius: 4px;
   height: 88rpx !important;
   line-height: 88rpx !important;
@@ -74,7 +81,7 @@ button[type='save'] {
   font-weight: normal !important;
   width: 100% !important;
   font-size: 28rpx !important;
-  color: #ffffff;
+  color: var(fcolor);
   letter-spacing: 0.23rpx;
 }
 
@@ -82,6 +89,11 @@ button[type='save'] {
   display: flex;
   flex-direction: column;
   padding: 0 40rpx;
+}
+
+.form-main.reg-log {
+  height: 100vh;
+  background-color: #fff;
 }
 
 .form-group {
@@ -245,12 +257,4 @@ button[type='save'] {
   color: #333;
   border-radius: 12rpx;
   background-color: #ffd200;
-}
-
-page {
-  --tc: #ffd200;
-  --theam-color: #ffd200;
-  --fcolor: #333333;
-  --ww: 0.872;
-  background-color: #efefef;
 }
