@@ -1,8 +1,8 @@
 // pages/work/index.js
 const app = getApp()
 import utils from '../../utils/util.js'
-var QQMapWX = require('../../libs/qqmap-wx-jssdk1.2/qqmap-wx-jssdk.js')
-var qqmapsdk
+// var QQMapWX = require('../../libs/qqmap-wx-jssdk1.2/qqmap-wx-jssdk.js')
+// var qqmapsdk
 Page({
   /**
    * 页面的初始数据
@@ -94,22 +94,21 @@ Page({
     that.setData({
       animation: _animation,
     })
-    wx.getSystemInfo({
-      success(res) {
-        let headerH = wx.getMenuButtonBoundingClientRect()
-        that.setData({
-          statusBarHeight: res.statusBarHeight, //状态栏高度
-          wHeight: res.windowHeight,
-          titleBarHeight:
-            headerH.bottom + headerH.top - res.statusBarHeight * 2 + 20,
-        })
-      },
-    })
+
     console.log('app.globalData', app.globalData)
-    // 创建动画实例
+    let headerH = wx.getMenuButtonBoundingClientRect()
+    let statusBar = app.globalData.statusBar
+    that.setData({
+      statusBarHeight: statusBar, //状态栏高度
+      wHeight: app.globalData.windowHeight,
+      titleBarHeight: headerH.bottom + headerH.top - statusBar * 2 + 20,
+    })
     that.setData({
       statusBar: app.globalData.statusBar,
       customBar: app.globalData.customBar,
+    })
+    that.setData({
+      currentAddress: app.globalData.currentAddress,
     })
   },
 
@@ -122,18 +121,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    console.log('show')
+    console.log('show work')
     let that = this
-    let address = wx.getStorageSync('address')
-    that.setData({
-      currentAddress: address,
-    })
-    if (!address) {
-    } else {
-      that.setData({
-        currentAddress: address,
-      })
-    }
+
     // 生生模拟数据
     let rows = that.initData(20)
 

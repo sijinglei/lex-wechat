@@ -1,6 +1,6 @@
 // app.js
-const QQMapWX = require('../libs/qqmap-wx-jssdk1.2/qqmap-wx-jssdk.js')
-const qqmapsdk = null
+const QQMapWX = require('./libs/qqmap-wx-jssdk1.2/qqmap-wx-jssdk.js')
+let qqmapsdk = null
 App({
   onLaunch() {
     // 展示本地存储能力
@@ -30,6 +30,8 @@ App({
           (menu.top - res.statusBarHeight) * 2 + menu.height //胶囊高度
         let locationEnabled = res.locationEnabled //判断手机定位服务是否开启
         let locationAuthorized = res.locationAuthorized //判断定位服务是否允许微信授权
+        console.log('是否开启定位', locationEnabled)
+        let that = this
         if (!locationEnabled || !locationAuthorized) {
           //手机定位服务（GPS）未授权
           wx.showToast({
@@ -37,38 +39,40 @@ App({
           })
           return
         } else {
+          console.log('获取定位')
           qqmapsdk = new QQMapWX({
-            key: this.globalData.mapSDKKey, //腾讯位置服务key
+            key: that.globalData.mapSDKKey, //腾讯位置服务key
           })
           const getAddress = location => {
             qqmapsdk.reverseGeocoder({
               location: location,
               coord_type: 1,
-              sig: this.globalData.mapSDKKey,
+              sig: that.globalData.mapSDKKey,
               success(res) {
                 if (res.status == 0) {
                   let data = res.result
-                  wx.setStorageSync(
-                    'address',
-                    data.address_component.districtta
-                  )
+                  that.globalData.currentAddress =
+                    data.address_component.district
                 } else {
                   console.log('获取失败')
                 }
               },
             })
           }
-          let address = wx.getStorageSync('address') || ''
-          if (address) {
-            this.globalData.currentAddress = address
+          // let address = wx.getStorageSync('address') || ''
+          // 获取选择位置的缓存数据
+          let _latitude = wx.getStorageSync('latitude') || ''
+          let _longitude = wx.getStorageSync('longitude') || ''
+          if (_latitude && _longitude) {
+            getAddress({ latitude: _latitude, longitude: _longitude })
           } else {
             wx.getLocation({
               type: 'wgs84',
               success(res) {
                 const latitude = res.latitude
                 const longitude = res.longitude
-                this.globalData.latitude = res.latitude
-                this.globalData.longitude = res.longitude
+                that.globalData.latitude = latitude
+                that.globalData.longitude = longitude
                 getAddress({ latitude, longitude })
               },
             })
@@ -79,12 +83,15 @@ App({
   },
 
   globalData: {
-    appId: 'wxe6e66f26705dd745',
     statusBar: 0,
     customBar: 0,
     windowHeight: 0,
     navigationBar: 0,
     userInfo: null,
+    currentAddress: '',
+    latitude: '',
+    longitude: '',
+    appId: 'wxe6e66f26705dd745',
     mapSDKKey: 'NCQBZ-GWGRM-D5L6S-6W73R-JOCMV-OTBR7', //地图SDKkey
   },
 })
