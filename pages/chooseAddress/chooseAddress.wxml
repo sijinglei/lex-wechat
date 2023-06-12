@@ -23,7 +23,7 @@
               <view class="right-classify-title">{{item.name}}</view>
               <view class="list">
                 <block wx:for="{{item.areas}}" wx:for-item="d" wx:key="d.code">
-                  <view class="item" data-id="{{d.id}}" data-name="{{d.name}}" bindtap="itemHandleClick">
+                  <view class="item" data-item="{{d}}" bindtap="itemHandleClick">
                     <text>{{d.name}}</text>
                   </view>
                 </block>

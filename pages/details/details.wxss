@@ -1,1 +1,149 @@
-/* pages/details/details.wxss */
+page {
+  background-color: #fff;
+}
+
+.f-start {
+  display: flex;
+  align-items: center;
+}
+
+.between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.details {
+  padding: 30rpx;
+  color: var(--fcolor);
+}
+
+.details .head .title {
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.details .card {
+  height: 160rpx;
+  background: #ffffff;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.3);
+  padding: 30rpx 20rpx;
+  border-radius: 20rpx;
+  margin: 30rpx 0;
+}
+
+.details .card .left image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.details .card .left .info {
+  font-size: 24rpx;
+  margin-left: 10rpx;
+}
+
+.details .card .left .info .t1 {
+  font-size: 36rpx;
+}
+
+.details .card .left .info .t2 {
+  margin: 6rpx;
+}
+
+.details .card .left .info .t3 {
+  color: #888888;
+}
+
+.details .infos .t-box {
+  margin-bottom: 10rpx;
+}
+
+.details .infos .t-box .label {
+  font-weight: bold;
+  font-size: 32rpx;
+  margin-bottom: 10rpx;
+}
+
+.details .infos .t-box .txt {
+  font-size: 24rpx;
+}
+
+.details .waining-box {
+  background: #f7d7bd;
+  border-radius: 20rpx;
+  height: 160rpx;
+  padding: 30rpx 20rpx;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 120rpx;
+  width: calc(100% - 60rpx);
+}
+
+.details .waining-box .content {
+  padding-right: 150rpx;
+}
+
+.details .waining-box .content .t-tip {
+  font-weight: bold;
+}
+
+.details .waining-box .content .txt {
+  line-height: 40rpx;
+}
+
+.details .waining-box .content .txt text {
+  color: #ff6600;
+}
+
+.details .waining-box .icon {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.details .waining-box .icon text {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: #fa5151;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 52rpx;
+  font-weight: bold;
+  color: #fff;
+}
+
+.details .bot-btn {
+  position: fixed;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  background: var(--tc);
+  font-weight: bold;
+  bottom: 0;
+  left: 0;
+}
+
+.details .bot-btn .share {
+  width: 200rpx;
+  height: 100%;
+  position: relative;
+  background: #d6b208;
+}
+
+.details .bot-btn .share .shareBtn {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  color: var(--fcolor);
+}
+
+.details .bot-btn .contact {
+  flex: 1;
+  text-align: center;
+}

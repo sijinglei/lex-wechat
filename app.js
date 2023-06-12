@@ -30,8 +30,8 @@ App({
           (menu.top - res.statusBarHeight) * 2 + menu.height //胶囊高度
         let locationEnabled = res.locationEnabled //判断手机定位服务是否开启
         let locationAuthorized = res.locationAuthorized //判断定位服务是否允许微信授权
-        console.log('是否开启定位', locationEnabled)
         let that = this
+        console.log('是否开启定位', that)
         if (!locationEnabled || !locationAuthorized) {
           //手机定位服务（GPS）未授权
           wx.showToast({
@@ -39,32 +39,17 @@ App({
           })
           return
         } else {
-          console.log('获取定位')
           qqmapsdk = new QQMapWX({
             key: that.globalData.mapSDKKey, //腾讯位置服务key
           })
-          const getAddress = location => {
-            qqmapsdk.reverseGeocoder({
-              location: location,
-              coord_type: 1,
-              sig: that.globalData.mapSDKKey,
-              success(res) {
-                if (res.status == 0) {
-                  let data = res.result
-                  that.globalData.currentAddress =
-                    data.address_component.district
-                } else {
-                  console.log('获取失败')
-                }
-              },
-            })
-          }
+
           // let address = wx.getStorageSync('address') || ''
           // 获取选择位置的缓存数据
           let _latitude = wx.getStorageSync('latitude') || ''
           let _longitude = wx.getStorageSync('longitude') || ''
+          console.log('获取定位', _latitude, _longitude)
           if (_latitude && _longitude) {
-            getAddress({ latitude: _latitude, longitude: _longitude })
+            that.getAddress({ latitude: _latitude, longitude: _longitude })
           } else {
             wx.getLocation({
               type: 'wgs84',
@@ -73,7 +58,7 @@ App({
                 const longitude = res.longitude
                 that.globalData.latitude = latitude
                 that.globalData.longitude = longitude
-                getAddress({ latitude, longitude })
+                that.getAddress({ latitude, longitude })
               },
             })
           }
@@ -81,7 +66,22 @@ App({
       },
     })
   },
-
+  getAddress(location) {
+    let that = this
+    qqmapsdk.reverseGeocoder({
+      location: location,
+      coord_type: 1,
+      sig: that.globalData.mapSDKKey,
+      success(res) {
+        if (res.status == 0) {
+          let data = res.result
+          that.globalData.currentAddress = data.address_component.district
+        } else {
+          console.log('获取失败')
+        }
+      },
+    })
+  },
   globalData: {
     statusBar: 0,
     customBar: 0,

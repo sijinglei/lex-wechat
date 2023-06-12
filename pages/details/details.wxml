@@ -1,2 +1,60 @@
-<!--pages/details/details.wxml-->
-<text>pages/details/details.wxml</text>
+<view class="details">
+  <view class="between head">
+    <view class="f-start title">
+      餐厅服务员<text class="hot">急招</text>
+    </view>
+    <text>需5人</text>
+  </view>
+  <view class="between card">
+    <view class="f-start left">
+      <image src="/image/logo.jpg" mode="aspectFill"></image>
+      <view class="info">
+        <view class="t1">潮味轩</view>
+        <view class="t2">南山区·世界之窗正门口左边</view>
+        <view class="t3">距您2.3公里</view>
+      </view>
+    </view>
+    <van-icon name="arrow" />
+  </view>
+  <view class="infos">
+    <view class="t-box">
+      <view class="label">岗位要求</view>
+      <view class="txt">55岁以下，最少工作3天，带车</view>
+    </view>
+    <view class="t-box">
+      <view class="label">薪酬说明</view>
+      <view class="txt">日结、每天200元</view>
+    </view>
+    <view class="t-box">
+      <view class="label">福利说明</view>
+      <view class="txt">日结、每天200元</view>
+    </view>
+    <view class="t-box">
+      <view class="label">工作时间</view>
+      <view class="txt">2021-11-19 至 2021-11-21 17:00 - 24:00 </view>
+    </view>
+    <view class="t-box">
+      <view class="label">工作内容</view>
+      <view class="txt">刷盘子洗碗</view>
+    </view>
+  </view>
+  <view class="between waining-box">
+    <view class="content">
+      <view class="t-tip">求职安全提醒</view>
+      <view class="txt">该职位承诺不收取任何费用
+        如有疑问请<text>举报</text>
+      </view>
+    </view>
+    <view class="icon">
+      <text>!</text>
+    </view>
+  </view>
+  <view class="bot-btn">
+    <!-- #ifdef MP-WEIXIN -->
+    <view class="share">
+      <button class="shareBtn" open-type="share">分享</button>
+    </view>
+    <!-- #endif -->
+    <view class="contact" bindtap="getConact">获取联系方式</view>
+  </view>
+</view>

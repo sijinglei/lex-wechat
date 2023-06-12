@@ -27,7 +27,6 @@ Page({
   onLoad(options) {
     this.setData({
       scrollHeight: app.globalData.windowHeight,
-      currentAddress: options.address || '',
     })
     wx.setNavigationBarTitle({
       title: '位置选择',
@@ -92,15 +91,16 @@ Page({
     })
   },
   itemHandleClick(e) {
-    let { name, id } = e.currentTarget.dataset
+    let { name, id, latitude, longitude } = e.currentTarget.dataset.item
     if (this.data.type == 2) {
       wx.setStorageSync('ZP_AREA', name)
     } else {
       wx.setStorageSync('address', name)
     }
-    this.setData({
-      currentAddress: name,
-    })
+    // this.setData({
+    //   currentAddress: name,
+    // })
+    app.getAddress({ longitude, latitude })
     wx.navigateBack()
   },
   /**
@@ -111,7 +111,11 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {},
+  onShow() {
+    this.setData({
+      currentAddress: app.globalData.currentAddress,
+    })
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

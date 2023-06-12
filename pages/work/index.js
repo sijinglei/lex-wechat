@@ -1,8 +1,6 @@
 // pages/work/index.js
 const app = getApp()
 import utils from '../../utils/util.js'
-// var QQMapWX = require('../../libs/qqmap-wx-jssdk1.2/qqmap-wx-jssdk.js')
-// var qqmapsdk
 Page({
   /**
    * 页面的初始数据
@@ -11,7 +9,7 @@ Page({
     showFilter: false,
     keywords: '', //搜索关键字
     currentId: 1,
-    currentAddress: '',
+    currentAddress: app.globalData.currentAddress || '',
     filters: [
       {
         id: 1,
@@ -107,33 +105,34 @@ Page({
       statusBar: app.globalData.statusBar,
       customBar: app.globalData.customBar,
     })
-    that.setData({
-      currentAddress: app.globalData.currentAddress,
-    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {},
-
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
     console.log('show work')
     let that = this
-
+    console.log('app', app)
+    // 延期获取一下
+    setTimeout(() => {
+      that.setData({
+        currentAddress: app.globalData.currentAddress,
+      })
+      // this.getList()
+    }, 200)
     // 生生模拟数据
     let rows = that.initData(20)
-
     setTimeout(() => {
       that.setData({
         list: rows,
         loadding: false,
       })
     }, 2000)
-    this.getList()
   },
 
   /**
@@ -191,7 +190,6 @@ Page({
       })
     }
   },
-
   touchEnd(e) {
     console.log(e)
     if (e.changedTouches.length == 1) {
