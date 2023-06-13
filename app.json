@@ -1,98 +1,97 @@
 {
-  "pages": [
-    "pages/work/index",
-    "pages/service/index",
-    "pages/publish/index",
-    "pages/mine/index",
-    "pages/index/index",
-    "pages/404/404",
-    "pages/details/details",
-    "pages/search/search",
-    "pages/chooseAddress/chooseAddress",
-    "pages/release/release",
-    "pages/releaseService/releaseService",
-    "pages/login/login",
-    "pages/phoneLogin/phoneLogin",
-    "pages/register/register",
-    "pages/success/success"
-  ],
-  "permission": {
-    "scope.userLocation": {
-      "desc": "你的位置信息将用于小程序位置接口数据展示"
-    }
-  },
-  "requiredPrivateInfos": ["chooseLocation", "getLocation", "chooseLocation"],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#FFD200",
-    "navigationBarTitleText": "乐享零工",
-    "navigationBarTextStyle": "black",
-    "backgroundColor": "#EFEFEF",
-    "enablePullDownRefresh": true
-  },
-  "tabBar": {
-    "color": "#333333",
-    "selectedColor": "#FFD200",
-    "backgroundColor": "#FFFFFF",
-    "borderStyle": "white",
-    "list": [
-      {
-        "pagePath": "pages/work/index",
-        "text": "找零工",
-        "iconPath": "image/tab/icon_work.png",
-        "selectedIconPath": "image/tab/icon_work_ac.png"
-      },
-      {
-        "pagePath": "pages/service/index",
-        "text": "便民服务",
-        "iconPath": "image/tab/icon_service.png",
-        "selectedIconPath": "image/tab/icon_service_ac.png"
-      },
-      {
-        "pagePath": "pages/publish/index",
-        "text": "我要发布",
-        "iconPath": "image/tab/icon_publish.png",
-        "selectedIconPath": "image/tab/icon_publish_ac.png"
-      },
-      {
-        "pagePath": "pages/mine/index",
-        "text": "我的",
-        "iconPath": "image/tab/icon_me.png",
-        "selectedIconPath": "image/tab/icon_me_ac.png"
-      }
-    ]
-  },
-  "sitemapLocation": "sitemap.json",
-  "usingComponents": {
-    "no-data": "/components/noData/noData",
-    "van-button": "@vant/weapp/button/index",
-    "van-toast": "@vant/weapp/toast/index",
-    "van-dialog": "@vant/weapp/dialog/index",
-    "van-loading": "@vant/weapp/loading/index",
-    "van-circle": "@vant/weapp/circle/index",
-    "van-search": "@vant/weapp/search/index",
-    "van-image": "@vant/weapp/image/index",
-    "van-collapse": "@vant/weapp/collapse/index",
-    "van-collapse-item": "@vant/weapp/collapse-item/index",
-    "van-skeleton": "@vant/weapp/skeleton/index",
-    "van-empty": "@vant/weapp/empty/index",
-    "van-cell": "@vant/weapp/cell/index",
-    "van-cell-group": "@vant/weapp/cell-group/index",
-    "van-uploader": "@vant/weapp/uploader/index",
-    "van-field": "@vant/weapp/field/index",
-    "van-checkbox": "@vant/weapp/checkbox/index",
-    "van-radio": "@vant/weapp/radio/index",
-    "van-radio-group": "@vant/weapp/radio-group/index",
-    "van-popup": "@vant/weapp/popup/index",
-    "van-picker": "@vant/weapp/picker/index",
-    "van-row": "@vant/weapp/row/index",
-    "van-col": "@vant/weapp/col/index",
-    "van-icon": "@vant/weapp/icon/index",
-    "van-panel": "@vant/weapp/panel/index",
-    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
-    "van-area": "@vant/weapp/area/index",
-    "van-action-sheet": "@vant/weapp/action-sheet/index",
-    "van-switch": "@vant/weapp/switch/index"
-  },
-  "lazyCodeLoading": "requiredComponents"
+    "pages": [
+        "pages/work/index",
+        "pages/service/index",
+        "pages/publish/index",
+        "pages/mine/index",
+        "pages/index/index",
+        "pages/404/404",
+        "pages/details/details",
+        "pages/search/search",
+        "pages/chooseAddress/chooseAddress",
+        "pages/release/release",
+        "pages/releaseService/releaseService",
+        "pages/login/login",
+        "pages/phoneLogin/phoneLogin",
+        "pages/register/register",
+        "pages/success/success"
+    ],
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于小程序位置接口数据展示"
+        }
+    },
+    "requiredPrivateInfos": ["chooseLocation", "getLocation", "chooseLocation"],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#FFD200",
+        "navigationBarTitleText": "乐享零工",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#EFEFEF",
+        "enablePullDownRefresh": true
+    },
+    "tabBar": {
+        "color": "#333333",
+        "selectedColor": "#FFD200",
+        "backgroundColor": "#FFFFFF",
+        "borderStyle": "white",
+        "list": [{
+                "pagePath": "pages/work/index",
+                "text": "找零工",
+                "iconPath": "image/tab/icon_work.png",
+                "selectedIconPath": "image/tab/icon_work_ac.png"
+            },
+            {
+                "pagePath": "pages/service/index",
+                "text": "便民服务",
+                "iconPath": "image/tab/icon_service.png",
+                "selectedIconPath": "image/tab/icon_service_ac.png"
+            },
+            {
+                "pagePath": "pages/publish/index",
+                "text": "我要发布",
+                "iconPath": "image/tab/icon_publish.png",
+                "selectedIconPath": "image/tab/icon_publish_ac.png"
+            },
+            {
+                "pagePath": "pages/mine/index",
+                "text": "我的",
+                "iconPath": "image/tab/icon_me.png",
+                "selectedIconPath": "image/tab/icon_me_ac.png"
+            }
+        ]
+    },
+    "sitemapLocation": "sitemap.json",
+    "usingComponents": {
+        "no-data": "/components/noData/noData",
+        "van-button": "@vant/weapp/button/index",
+        "van-toast": "@vant/weapp/toast/index",
+        "van-dialog": "@vant/weapp/dialog/index",
+        "van-loading": "@vant/weapp/loading/index",
+        "van-circle": "@vant/weapp/circle/index",
+        "van-search": "@vant/weapp/search/index",
+        "van-image": "@vant/weapp/image/index",
+        "van-collapse": "@vant/weapp/collapse/index",
+        "van-collapse-item": "@vant/weapp/collapse-item/index",
+        "van-skeleton": "@vant/weapp/skeleton/index",
+        "van-empty": "@vant/weapp/empty/index",
+        "van-cell": "@vant/weapp/cell/index",
+        "van-cell-group": "@vant/weapp/cell-group/index",
+        "van-uploader": "@vant/weapp/uploader/index",
+        "van-field": "@vant/weapp/field/index",
+        "van-checkbox": "@vant/weapp/checkbox/index",
+        "van-radio": "@vant/weapp/radio/index",
+        "van-radio-group": "@vant/weapp/radio-group/index",
+        "van-popup": "@vant/weapp/popup/index",
+        "van-picker": "@vant/weapp/picker/index",
+        "van-row": "@vant/weapp/row/index",
+        "van-col": "@vant/weapp/col/index",
+        "van-icon": "@vant/weapp/icon/index",
+        "van-panel": "@vant/weapp/panel/index",
+        "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+        "van-area": "@vant/weapp/area/index",
+        "van-action-sheet": "@vant/weapp/action-sheet/index",
+        "van-switch": "@vant/weapp/switch/index"
+    },
+    "lazyCodeLoading": "requiredComponents"
 }

@@ -3,5 +3,5 @@
 	  <view class="h1">发布审核中，请耐心等待</view>
 	  <text class="txt">审核通过后，系统将会立即通知您，
 	    请保持电话畅通，微信可添加！</text>
-	  <button class="button" bindtap="toHome">回到首页</button>
+	  <button type="save" class="button" bindtap="toHome">回到首页</button>
 	</view>

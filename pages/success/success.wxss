@@ -3,6 +3,7 @@
   margin-top: 204rpx;
   flex-direction: column;
   align-items: center;
+  padding: 0 30rpx;
 }
 
 .success-page .state-img {
