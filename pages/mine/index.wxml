@@ -1,15 +1,15 @@
 <view class="work">
-  <view class="head mine" :style="{'padding-top':statusBarHeight+'px'}">
+  <view class="head mine">
     <view class="info">
       <image wx:if="{{wxuserInfo&&wxuserInfo.avatarUrl}}" class="logo" src="{{wxuserInfo.avatarUrl}}" mode="aspectFill">
       </image>
       <image wx:else class="logo" src="/image/logo.jpg" mode="aspectFill"></image>
       <view class="title">
-        <block wx:if="{{isLogin}}">
-          <text class="h1">{{(wxuserInfo&&wxuserInfo.nickName)||'--'}}</text>
-          <text class="txt">176****6879</text>
+        <block wx:if="{{wxuserInfo}}">
+          <text class="h1">{{(wxuserInfo&&wxuserInfo.name)||'--'}}</text>
+          <text class="txt">{{wxuserInfo.mobile}}</text>
         </block>
-        <view bindtap="toLogin" wx:else class="h1">
+        <view bindtap="toLogin" wx:else class="h1 nolog">
           未登录
           <van-icon name="arrow" />
         </view>

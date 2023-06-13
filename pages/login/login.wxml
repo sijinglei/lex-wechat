@@ -19,7 +19,8 @@
     </view>
   </view>
   <view class="login-main">
-    <button wx:if="{{checked}}" type="save" open-type="getPhoneNumber" bindgetphonenumber="author">微信一键登陆</button>
+    <!-- <button wx:if="{{checked}}" type="save" open-type="getPhoneNumber" bindgetphonenumber="author">微信一键登陆</button> -->
+    <button wx:if="{{checked}}" type="save" bindtap="loginCode">微信一键登陆</button>
     <button wx:else type="save" bindtap="author">微信一键登陆</button>
     <button class="text" bindtap="loginPhone">手机号码登陆</button>
     <view class="xieyi {{isDd?'doudong':''}}">

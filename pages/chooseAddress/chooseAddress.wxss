@@ -49,6 +49,10 @@
   /* padding: 0 20rpx; */
 }
 
+.right.p80 {
+  padding-bottom: 80rpx;
+}
+
 .right-classify-title {
   font-size: 28rpx;
   color: #23292f;
@@ -83,4 +87,10 @@
   margin: 14rpx 0;
   font-size: 24rpx;
   color: #23292f;
+}
+
+.sure-area {
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }

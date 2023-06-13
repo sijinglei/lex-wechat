@@ -14,7 +14,7 @@
           </view>
         </scroll-view>
       </view>
-      <view class="right">
+      <view class="right {{type==2?'p80':''}}">
         <!-- <van-search background="#F2F2F2" value="{{ keyWord }}" placeholder="请输入搜索关键词" /> -->
         <scroll-view scroll-y="{{true}}" style="height:{{(scrollHeight - 50)}}px" :scroll-into-view="toView"
           scroll-top="0" scroll="scrollTo" scroll-with-animation>
@@ -30,6 +30,7 @@
               </view>
             </view>
           </view>
+          <button class="sure-area" type="save" wx:if="{{type==2}}">确定</button>
         </scroll-view>
       </view>
     </view>

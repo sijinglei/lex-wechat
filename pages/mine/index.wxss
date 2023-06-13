@@ -22,8 +22,8 @@
 }
 
 .work .head .logo {
-  width: 88rpx;
-  height: 88rpx;
+  width: 80rpx;
+  height: 80rpx;
   border-radius: 50%;
 }
 
@@ -35,31 +35,57 @@
 }
 
 .work .head .title .h1 {
-  font-size: 38rpx;
+  font-size: 36rpx;
 }
 
 .work .head .title .txt {
   font-size: 24rpx;
-  margin-top: 8rpx;
+  margin-top: 4rpx;
+}
+
+.work .head.fixed {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  width: 100%;
+  left: 0;
+  transition: all 0.4s;
+}
+
+.work .head.fixed .logo,
+.work .head.fixed .title {
+  display: none;
 }
 
 .work .top-bar {
+  height: 100rpx;
+  display: flex;
+  align-items: center;
   width: 100%;
   background-color: var(--theam-color);
 }
 
 .work .top-bar .content {
-  height: 132rpx;
-  width: calc(100% - 40rpx);
+  height: 90rpx;
+  width: calc(100% - 36rpx);
   padding: 0 20rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+.work .top-bar.fixed {
+  position: fixed;
+  z-index: 3;
+}
+
 .work .top-bar .position {
   flex: 0.8;
   box-sizing: border-box;
+}
+
+.work .top-bar .position.service {
+  flex: 0.6;
 }
 
 .work .top-bar .search {
@@ -100,35 +126,56 @@
   align-items: center;
 }
 
+.work .top-bar .qiuzhi.fixed {
+  opacity: 0;
+}
+
+.work.service .top-bar.fixed {
+  transform: all 0.4s;
+}
+
+.work.service .top-bar.fixed .content {
+  justify-content: flex-start;
+}
+
 .work .main {
   padding: 20rpx 30rpx;
-  height: 100vh;
   position: relative;
 }
 
-.work .main .fillters {
+.work .fillters {
   display: flex;
   height: 80rpx;
   align-items: center;
   justify-content: space-between;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  width: 100%;
 }
 
-.work .main .fillters .left {
+.work .fillters.fixed {
+  position: fixed;
+  background-color: #efefef;
+  z-index: 2;
+}
+
+.work .fillters .left {
   display: flex;
   align-items: center;
 }
 
-.work .main .fillters .left view {
+.work .fillters .left view {
   color: #888;
   padding: 6rpx 0;
   position: relative;
 }
 
-.work .main .fillters .left view.active {
+.work .fillters .left view.active {
   color: var(--fcolor);
+  font-weight: bold;
 }
 
-.work .main .fillters .left view.active::after {
+.work .fillters .left view.active::after {
   position: absolute;
   content: '';
   display: block;
@@ -139,21 +186,8 @@
   width: 100%;
 }
 
-.work .main .fillters .left view + view {
+.work .fillters .left view + view {
   margin-left: 20rpx;
-}
-
-.work .main .list {
-  height: calc(100% - 80rpx - 190rpx);
-  overflow-y: auto;
-}
-
-.work .main .list .list-box {
-  height: 330rpx;
-  width: 100%;
-  background-color: #fff;
-  border-radius: 40rpx;
-  margin-bottom: 30rpx;
 }
 
 .tabs {
@@ -242,4 +276,8 @@
   font-size: 24rpx;
   color: #999;
   margin-top: 40rpx;
+}
+
+.nolog {
+  font-size: 28rpx;
 }

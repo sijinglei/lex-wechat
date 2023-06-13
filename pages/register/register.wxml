@@ -1,9 +1,10 @@
 <view class="form-main reg-log">
   <image class="logo" src="/image/logo.jpg" mode="aspectFit"></image>
   <view class="register-main">
-    <form catchsubmit="login">
+    <form catchsubmit="formSubmit">
       <view class="form-group line05">
-        <input name="mobile" type="number" value="{{mobile}}" placeholder="请输入您的手机号码" />
+        <input name="mobile" id="mobile" type="number" value="{{mobile}}" bindinput="bindKeyInput"
+          placeholder="请输入您的手机号码" />
       </view>
       <view class="form-group line05">
         <input name="name" type="text" value="{{name}}" placeholder="请输入用户名" />
@@ -20,7 +21,7 @@
         <text class="yzm" wx:else>{{countTime}}S</text>
       </view>
 
-      <button type="save" bindtap="register">注册</button>
+      <button type="save" form-type="submit">注册</button>
       <view class="hasuser" bindtap="toLogin">已有账号，去登录</view>
     </form>
   </view>

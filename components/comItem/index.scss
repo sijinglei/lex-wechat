@@ -1,46 +1,58 @@
 .item-box {
-  min-height: 270rpx;
-  height: auto;
-  overflow: hidden;
-  width: 100%;
-  background-color: #fff;
-  border-radius: 40rpx;
-  margin-bottom: 30rpx;
-  padding: 20rpx 30rpx;
-  box-sizing: border-box;
-  color: var(--fcolor);
-  .title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 32rpx;
-    .name {
-      font-weight: bold;
-      display: flex;
-      align-items: center;
+    min-height: 270rpx;
+    height: auto;
+    overflow: hidden;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 40rpx;
+    margin-bottom: 30rpx;
+    padding: 20rpx 30rpx;
+    box-sizing: border-box;
+    color: var(--fcolor);
+    .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 32rpx;
+        .name {
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        .job-num {
+            color: var(--theam-color);
+        }
     }
-    .job-num {
-      color: var(--theam-color);
+    .infos {
+        font-size: 24rpx;
+        .txt {
+            margin: 4rpx 0;
+        }
     }
-  }
-  .infos {
+    .bot {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20rpx;
+        button {
+            margin: 0;
+            width: 200rpx;
+            height: 60rpx;
+            line-height: 60rpx;
+            font-size: 24rpx;
+            background-color: var(--tc);
+            border: none;
+        }
+    }
+}
+
+
+/* 急招 */
+
+.hot {
+    background: #e93a3a;
     font-size: 24rpx;
-    .txt {
-      margin: 4rpx 0;
-    }
-  }
-  .bot {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20rpx;
-    button {
-      margin: 0;
-      width: 200rpx;
-      height: 60rpx;
-      line-height: 60rpx;
-      font-size: 24rpx;
-      background-color: var(--tc);
-      border: none;
-    }
-  }
+    border-radius: 8rpx;
+    padding: 4rpx 8rpx;
+    color: #fff;
+    margin-left: 10rpx;
 }

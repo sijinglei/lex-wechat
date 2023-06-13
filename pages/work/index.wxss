@@ -143,38 +143,39 @@
   position: relative;
 }
 
-.work .main .fillters {
+.work .fillters {
   display: flex;
   height: 80rpx;
   align-items: center;
   justify-content: space-between;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  width: 100%;
 }
 
-.work .main .fillters.fixed {
+.work .fillters.fixed {
   position: fixed;
-  width: calc(100% - 58rpx);
-  left: 30rpx;
   background-color: #efefef;
   z-index: 2;
 }
 
-.work .main .fillters .left {
+.work .fillters .left {
   display: flex;
   align-items: center;
 }
 
-.work .main .fillters .left view {
+.work .fillters .left view {
   color: #888;
   padding: 6rpx 0;
   position: relative;
 }
 
-.work .main .fillters .left view.active {
+.work .fillters .left view.active {
   color: var(--fcolor);
   font-weight: bold;
 }
 
-.work .main .fillters .left view.active::after {
+.work .fillters .left view.active::after {
   position: absolute;
   content: '';
   display: block;
@@ -185,6 +186,6 @@
   width: 100%;
 }
 
-.work .main .fillters .left view + view {
+.work .fillters .left view + view {
   margin-left: 20rpx;
 }

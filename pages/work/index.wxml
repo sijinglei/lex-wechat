@@ -16,26 +16,26 @@
       </view>
     </view>
   </view>
-  <view class="main">
-    <view class="fillters {{isFixed?'fixed':''}}" style="top:{{isFixed?customBar+'px':''}}">
-      <view class="left">
-        <block wx:for="{{filters}}" wx:for-item="d">
-          <view class="{{d.id==currentId?'active':''}}" data-id="{{d.id}}" catchtap="tabClick">{{d.text+''}}</view>
-        </block>
-      </view>
-      <view class="right" catchtap="openFilter">筛选
-        <van-icon name="arrow-down" />
-      </view>
+  <view class="fillters {{isFixed?'fixed':''}}" style="{{isFixed?'top:'+customBar+'px':''}}">
+    <view class="left">
+      <block wx:for="{{filters}}" wx:for-item="d">
+        <view class="{{d.id==currentId?'active':''}}" data-id="{{d.id}}" catchtap="tabClick">{{d.text+''}}</view>
+      </block>
     </view>
-
+    <view class="right" catchtap="openFilter">筛选
+      <van-icon name="arrow-down" />
+    </view>
+  </view>
+  <view class="main">
     <view class="list" bindtouchstart="touchStart" bindtouchend="touchEnd" animation="{{animationData}}">
-      <van-skeleton title row="3" loading="{{ loadding }}">
+      <van-skeleton wx:if="{{list&&list.length>0}}" title row="3" loading="{{ loadding }}">
         <block wx:for="{{list}}" wx:for-item="d">
           <block>
             <com-item item="{{d}}" type="{{1}}"></com-item>
           </block>
         </block>
       </van-skeleton>
+      <no-data wx:elif="{{!loadding}}"></no-data>
     </view>
 
   </view>
