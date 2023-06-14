@@ -26,7 +26,7 @@
     </view>
     <view class="t-box">
       <view class="label">薪酬说明</view>
-      <view class="txt">{{lex.getSettlementName(item.settlement)}}</view>
+      <view class="txt">{{item.settlementName}}，{{item.salary}}</view>
     </view>
     <view class="t-box">
       <view class="label">福利说明</view>
@@ -58,6 +58,8 @@
       <button class="shareBtn" open-type="share">分享</button>
     </view>
     <!-- #endif -->
-    <view class="contact" bindtap="getConact">获取联系方式</view>
+    <view class="contact" bindtap="getConact" wx:if="{{!isShowMobile}}">获取联系方式</view>
+    <view class="contact" wx:else bindtap="phoneCall">{{item.mobile}}</view>
   </view>
+  <van-dialog id="van-dialog" />
 </view>

@@ -99,6 +99,7 @@ Page({
             wx.setStorageSync('ZP_AREA', id)
             wx.setStorageSync('ZP_AREA_NAME', name)
         } else {
+            wx.setStorageSync('VIEW_AREAID', id)
             wx.setStorageSync('address', name)
         }
         // this.setData({

@@ -2,78 +2,41 @@
   <view class="replease">
     <form catchsubmit="formSubmit">
       <van-cell-group>
-        <van-cell center>
-          <view slot="title">
-            <view class="label tip">岗位信息</view>
-          </view>
-          <view class="item">
-            <text>是否急招</text>
-            <van-switch name="urgent" checked="{{formData.urgent}}" bind:change="onChange" activeValue="{{1}}"
-              inactiveValue="{{0}}" size="28px" />
-          </view>
-        </van-cell>
-        <van-field name="title" value="{{ formData.title }}" placeholder="请输入标题" required label="发布标题"
+        <van-field name="title" value="{{ formData.title }}" placeholder="请输入标题" required label="服务标题"
           input-align="right" />
-        <van-cell title="岗位类型" is-link value="{{currentJobName}}" bind:click="openGw" />
-        <van-cell title="需求人数" input-align="right">
-          <van-stepper name="quantity" value="{{ formData.quantity }}" min="1" integer bind:change="onChangeQuantity" />
-        </van-cell>
-        <van-cell title="性别" input-align="right">
-          <van-radio-group name="sex" value="{{ formData.sex }}" bind:change="onChangeSex" direction="horizontal">
-            <van-radio name="{{1}}" checked-color="#07C160">男</van-radio>
-            <van-radio name="{{2}}" checked-color="#07C160">女</van-radio>
-            <van-radio name="{{3}}" checked-color="#07C160">不限</van-radio>
-          </van-radio-group>
-        </van-cell>
-        <van-field name="age" value="{{ formData.age }}" placeholder="不限" label="年龄" input-align="right" />
-        <van-field name="other" value="{{ formData.other }}" placeholder="如有其他要求，请填写（非必填）" label=""
-          input-align="left" />
-        <van-field name="content" required value="{{ formData.content }}" placeholder="请填写工作内容" type="textarea"
-          autosize="{{ {maxHeight: 200+'px', minHeight: 100+'px'} }}" label="工作内容" input-align="left" />
-        <van-field name="jobTime" value="{{ formData.jobTime }}" placeholder="请填写工作时间" required type="textarea" autosize
-          label="工作时间" input-align="right" />
-        <van-cell center border="{{false}}">
+        <van-cell center required border="{{false}}">
           <view slot="title">
-            <view class="label tip">位置信息</view>
+            <view class="label tip">服务内容</view>
           </view>
         </van-cell>
-        <van-cell title="工作地点" is-link value="{{currentChooseAddr}}" bind:click="chooseAddr" />
-        <van-field name="address" required value="{{ formData.address }}" placeholder="请填详细地址" type="textarea" autosize
-          label="详细地址" input-align="right" />
-        <van-cell title="招聘区域" is-link value="南山区" bind:click="chooseArea" />
+        <van-field name="content" value="{{ formData.content }}" placeholder="请填写服务内容" type="textarea"
+          autosize="{{ {maxHeight: 200+'px', minHeight: 100+'px'} }}" label="" input-align="left" />
+
+        <van-field name="serviceTime" value="{{ formData.serviceTime }}" placeholder="请填写服务时间" required type="textarea"
+          autosize label="服务时间" input-align="right" />
+
+        <van-field name="expense" required value="{{ formData.expense }}" placeholder="请填写服务费用" type="textarea" autosize
+          label="服务费用" input-align="right" />
+
+        <van-cell title="服务区域" required is-link value="{{areaName||'选择区域'}}" bind:click="chooseArea" />
+
+        <!-- <van-cell title="服务类型" required is-link value="{{currentJobName}}" bind:click="openGw" /> -->
+
         <van-cell center border="{{false}}">
           <view slot="title">
-            <view class="label tip">报酬信息</view>
+            <view class="label tip">联系地址</view>
           </view>
         </van-cell>
-        <van-cell title="结算方式" is-link value="{{settlementName}}" bind:click="showPopupSettle" />
-        <van-field name="salary" value="{{ formData.salary }}" placeholder="请填写薪酬说明" type="textarea" autosize
-          label="薪酬说明" input-align="right" />
-        <van-field name="welfare" value="{{ formData.welfare }}" placeholder="请填写福利说明" type="textarea" autosize
-          label="福利说明" input-align="right" />
-        <van-field name="mobile" value="{{ formData.mobile }}" type="number" label="联系电话" input-align="right" />
-        <van-field name="weixin" value="{{ formData.weixin }}" label="微信" input-align="right" />
+        <van-cell title="定位位置" required is-link value="{{currentChooseAddr}}" bind:click="chooseAddr" />
+
+        <van-field name="address" required value="{{ formData.address }}" placeholder="请填服务详细地址" type="textarea"
+          autosize label="详细地址" input-align="right" />
+        <van-field name="mobile" required value="{{ formData.mobile }}" type="number" label="联系电话"
+          input-align="right" />
+        <van-field name="weixin" required value="{{ formData.weixin }}" label="微信" input-align="right" />
       </van-cell-group>
       <button class="button" formType="submit">确认并发布</button>
     </form>
-    <van-popup show="{{ showSettle }}" bind:close="onCloseSettle" position="bottom">
-      <van-radio-group value="{{ formData.settlement }}" bind:change="onChangeSettlement">
-        <van-cell-group>
-          <van-cell title="月结" clickable data-name="{{1}}" bind:click="onClickSettlement">
-            <van-radio slot="right-icon" name="{{1}}" />
-          </van-cell>
-          <van-cell title="周结" clickable data-name="{{2}}" bind:click="onClickSettlement">
-            <van-radio slot="right-icon" name="{{2}}" />
-          </van-cell>
-          <van-cell title="日结" clickable data-name="{{3}}" bind:click="onClickSettlement">
-            <van-radio slot="right-icon" name="{{3}}" />
-          </van-cell>
-          <van-cell title="完工结" clickable data-name="{{4}}" bind:click="onClickSettlement">
-            <van-radio slot="right-icon" name="{{4}}" />
-          </van-cell>
-        </van-cell-group>
-      </van-radio-group>
-    </van-popup>
     <van-popup show="{{ showGw }}" bind:close="closeGw" position="bottom">
       <view class="popup-main">
         <view class="head">
@@ -91,4 +54,5 @@
       </view>
     </van-popup>
   </view>
+  <van-toast id="msg-toast" />
 </view>

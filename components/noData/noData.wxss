@@ -1,4 +1,4 @@
-.noData{
+.noData {
     display: flex;
     height: 100%;
     width: 100%;
@@ -6,11 +6,19 @@
     align-items: center;
     flex-direction: column;
 }
-.noData image{
+
+.noData image {
     width: 516rpx;
     height: 516rpx;
 }
-.noData text{
+
+.noData text {
     margin-top: 20rpx;
-    color:#999;
+    color: #999;
+}
+
+.noData text.go-publish {
+    color: var(--tc);
+    text-decoration: underline;
+    font-weight: bold;
 }

@@ -1,4 +1,5 @@
 // pages/details/details.js
+import Dialog from '@vant/weapp/dialog/dialog'
 const app = getApp()
 Page({
     /**
@@ -7,6 +8,7 @@ Page({
     data: {
         item: null,
         address: '',
+        isShowMobile: false,
     },
 
     /**
@@ -36,6 +38,23 @@ Page({
             longitude: Math.floor(longitude),
             scale: 18,
             name: address,
+        })
+    },
+    getConact() {
+        let that = this
+        Dialog.alert({
+            title: '完成任务',
+            message: '完成任务，就可以免费获取',
+            theme: 'round-button',
+        }).then(() => {
+            that.setData({
+                isShowMobile: true,
+            })
+        })
+    },
+    phoneCall() {
+        wx.makePhoneCall({
+            phoneNumber: this.data.item.mobile,
         })
     },
     /**

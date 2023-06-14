@@ -58,10 +58,11 @@
     </view>
   </view>
   <view class="foot">
-    <button bindtap="logout()">退出登录</button>
+    <button bindtap="logout">退出登录</button>
     <view class="copy">
       <view>客服电话：17665256666 工作时间：9:30-18:30</view>
       <view>人力资源许可证｜营业执照</view>
     </view>
   </view>
+  <van-dialog id="van-dialog" />
 </view>

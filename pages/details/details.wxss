@@ -43,7 +43,7 @@ page {
 }
 
 .details .card .left .info .t1 {
-  font-size: 36rpx;
+  font-size: 32rpx;
 }
 
 .details .card .left .info .t2 {
@@ -60,7 +60,7 @@ page {
 
 .details .infos .t-box .label {
   font-weight: bold;
-  font-size: 32rpx;
+  font-size: 28rpx;
   margin-bottom: 10rpx;
 }
 

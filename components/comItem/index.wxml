@@ -6,8 +6,9 @@
       <view class="job-num">招{{item.quantity}}人</view>
     </view>
     <view class="infos">
-      <view class="txt add">南山区·世界之窗 | 距您2.3公里</view>
-      <view class="txt">薪酬：{{lex.getSettlementName(item.settlement)}}，{{item.salary}}</view>
+      <view class="txt add">{{item.area}}·{{item.address}} |
+        距您约{{lex.getDistance(detail.latitude1,detail.longitude1,detail.latitude,detail.longitude)}}</view>
+      <view class="txt">薪酬：{{item.settlementName}}，{{item.salary}}</view>
       <view class="txt">要求：性别{{item.sex==1?'男':item.sex==2?'女':'不限'}}，年龄{{item.age}}，{{item.content}}</view>
     </view>
     <block wx:if="{{type==1}}">

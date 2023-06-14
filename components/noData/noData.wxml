@@ -1,4 +1,5 @@
 <view class="noData">
   <image src="/image/no-data.png"></image>
   <text>{{ title }}</text>
+  <text wx:if="{{url}}" class="go-publish" bindtap="toPublish">去发布</text>
 </view>

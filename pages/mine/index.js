@@ -1,4 +1,5 @@
 // pages/mine/index.js
+import Dialog from '@vant/weapp/dialog/dialog'
 Page({
     /**
      * 页面的初始数据
@@ -48,16 +49,20 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {},
-    toLogin() {
-        wx.redirectTo({
-            url: '/pages/login/login',
-        })
-    },
     logout() {
-        wx.clearStorageSync()
-        wx.navigateTo({
-            url: '/pages/login/login',
-        })
+        Dialog.confirm({
+                title: '提醒',
+                message: '是否确认退出登陆？',
+            })
+            .then(() => {
+                wx.clearStorageSync()
+                wx.switchTab({
+                    url: '/pages/work/index',
+                })
+            })
+            .catch(() => {
+                // on cancel
+            })
     },
     /**
      * 生命周期函数--监听页面隐藏

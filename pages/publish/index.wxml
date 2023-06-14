@@ -17,7 +17,7 @@
       <van-icon name="arrow" />
     </view>
   </view>
-  <view class="list-box">
+  <!-- <view class="list-box">
     <view class="left">
       <view class="title">发布审批</view>
       <text>您周围有 2813 人等待工作</text>
@@ -25,5 +25,5 @@
     <view class="arrow">
       <van-icon name="arrow" />
     </view>
-  </view>
+  </view> -->
 </view>

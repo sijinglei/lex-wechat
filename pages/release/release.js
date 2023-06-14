@@ -203,6 +203,8 @@ Page({
             wx.redirectTo({
                 url: '/pages/success/success',
             })
+            wx.removeStorageSync('ZP_AREA')
+            wx.removeStorageSync('ZP_AREA_NAME')
         })
     },
     showPopupSettle() {

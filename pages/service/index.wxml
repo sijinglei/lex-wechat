@@ -5,7 +5,7 @@
   </view>
   <view class="top-bar {{isFixed?'fixed':''}}" style="{{isFixed?'top:'+(statusBar-9)+'px':''}}">
     <view class="content">
-      <view class="position service" bindtap="toAddress">南山区
+      <view class="position service" bindtap="toAddress">{{currentAddress}}
         <van-icon name="arrow" />
       </view>
       <view class="search" style="{{isFixed?'margin-right:'+(menuWidth+10)+'px':''}}" bindtap="toSearch">
@@ -15,11 +15,14 @@
   </view>
   <view class="main">
     <view class="list">
-      <block wx:for="{{list}}" wx:for-item="d">
-        <block>
-          <com-item item="{{d}}" type="{{2}}"></com-item>
+      <van-skeleton wx:if="{{list&&list.length>0}}" title row="3" loading="{{ loadding }}">
+        <block wx:for="{{list}}" wx:for-item="d">
+          <block>
+            <com-item item="{{d}}" type="{{2}}"></com-item>
+          </block>
         </block>
-      </block>
+      </van-skeleton>
+      <no-data wx:elif="{{!loadding}}" url="/pages/releaseService/releaseService" title="还没有发布服务"></no-data>
     </view>
   </view>
 </view>

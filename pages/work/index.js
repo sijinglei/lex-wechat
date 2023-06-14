@@ -69,13 +69,13 @@ Page({
         endX: 0,
         animationData: {},
         list: [],
-        rowData: [],
         isloading: false,
         total: 30,
         isFixed: false,
         latitude: '',
         longitude: '',
         loadding: true,
+        areaId: '1756',
     },
 
     /**
@@ -115,24 +115,22 @@ Page({
     onShow() {
         console.log('show work')
         let that = this
-        this.getList()
             // 延期获取一下
         setTimeout(() => {
-                console.log('currentAddress', that.data.currentAddress, app)
-                const adrr = app.globalData.currentAddress
-                that.setData({
-                    currentAddress: adrr,
-                })
-                console.log('currentAddress', adrr)
-            }, 1000)
-            // 生生模拟数据
-            // let rows = that.initData(20)
-        setTimeout(() => {
+            console.log('currentAddress', that.data.currentAddress, app)
+            const adrr = app.globalData.currentAddress
             that.setData({
-                // list: rows,
-                // loadding: false,
+                currentAddress: adrr,
             })
-        }, 2000)
+            console.log('currentAddress', adrr)
+        }, 1000)
+        let areaId = wx.getStorageSync('VIEW_AREAID') || ''
+        if (areaId) {
+            this.setData({
+                areaId: areaId,
+            })
+        }
+        that.getList()
     },
 
     /**
@@ -160,19 +158,19 @@ Page({
             settlementMethods: arr,
         })
     },
-    initData(n) {
-        let arr = new Array(n).fill(0).map((d, i) => {
-            let min = Math.ceil(1)
-            let max = Math.floor(3)
-            let type = Math.floor(Math.random() * (max - min + 1)) + min
-            return {
-                id: i + 1,
-                type: type,
-                title: `餐厅服务员${type}`,
-            }
-        })
-        return arr
-    },
+    // initData(n) {
+    //     let arr = new Array(n).fill(0).map((d, i) => {
+    //         let min = Math.ceil(1)
+    //         let max = Math.floor(3)
+    //         let type = Math.floor(Math.random() * (max - min + 1)) + min
+    //         return {
+    //             id: i + 1,
+    //             type: type,
+    //             title: `餐厅服务员${type}`,
+    //         }
+    //     })
+    //     return arr
+    // },
     tabClick(e) {
         console.log(e)
         let id = e.currentTarget.dataset.id
@@ -266,7 +264,7 @@ Page({
         }
     },
 
-    getList() {
+    getList(isMore = false) {
         wx.showLoading()
         this.setData({
             loadding: true,
@@ -274,30 +272,36 @@ Page({
         let obj = this.data.filters.find(d => d.id == this.data.currentId)
         let queryParams = obj.queryParams
         let api = obj.api
-        queryParams.areaId = '1756' // 获取当前区域id
         if (this.data.currentId == 2) {
             // 附近特殊处理
             queryParams['latitude'] = this.data.latitude
             queryParams['longitude'] = this.data.longitude
         }
+
         let query = {
             ...queryParams,
             ...this.data.pageParams,
+            areaId: this.data.areaId,
         }
         utils
             .get(api, query)
             .then(res => {
                 console.log('请求返回数据', res)
+                let rows = res.items
+                if (isMore) {
+                    rows = [...res.items, ...this.data.list]
+                } else {
+                    rows = res.items
+                }
                 this.setData({
                     loadding: false,
-                    list: res.items,
+                    list: rows,
                 })
                 wx.hideLoading()
             })
             .catch(err => {
                 wx.hideLoading()
             })
-            // this.list = this.rowData.filter(d => d.type == this.currentId)
     },
     /**
      * 页面相关事件处理函数--监听用户下拉动作
@@ -311,14 +315,15 @@ Page({
      */
     onReachBottom() {
         console.log('上拉加载更多。。。')
-
-        if (this.data.rowData.length >= this.data.total)
+        if (this.data.list.length >= this.data.total)
             return wx.showToast('数据加载完毕')
         if (this.data.isloading) return
-            // setTimeout(() => {
-            //   this.rowData = [...this.rowData, ...this.initData(10)];
-            //   this.getList();
-            // }, 1000);
+        setTimeout(() => {
+            this.setData({
+                'pageParams.page': this.data.pageParams.page++,
+            })
+            this.getList(true)
+        }, 1000)
     },
     onPageScroll(e) {
         this.setData({
@@ -332,7 +337,7 @@ Page({
     },
     toAddress() {
         wx.navigateTo({
-            url: '/pages/chooseAddress/chooseAddress?address=' + '南山区',
+            url: '/pages/chooseAddress/chooseAddress?type=1',
         })
     },
     clickLogin() {
