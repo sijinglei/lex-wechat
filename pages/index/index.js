@@ -16,6 +16,7 @@ Page({
             wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
         wifiList: [],
         currentAddress: '',
+        isIOS: false,
     },
     // 事件处理函数
     bindViewTap() {
@@ -73,12 +74,17 @@ Page({
                 const speed = res.speed
                 const accuracy = res.accuracy
                 getAddress({ latitude, longitude })
-                this.getWifis()
+                that.getWifis()
             },
         })
     },
     onShow() {
         let that = this
+        const platform = wx.getSystemInfoSync().platform
+        const isIOS = platform === 'ios'
+        this.setData({
+            isIOS,
+        })
     },
     getUserProfile(e) {
         // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
@@ -116,7 +122,9 @@ Page({
                         const wifiList = res.wifiList
                             .sort((a, b) => b.signalStrength - a.signalStrength)
                             .map(wifi => {
-                                const strength = wifi.signalStrength // Math.ceil(wifi.signalStrength * 4)
+                                const strength = this.data.isIOS ?
+                                    Math.ceil(wifi.signalStrength * 4) :
+                                    wifi.signalStrength
                                 return Object.assign(wifi, { strength })
                             })
                             .filter(d => !!d.SSID)
@@ -171,13 +179,13 @@ Page({
             SSID: item.SSID,
             password: '10242048',
             success(res) {
-                console.log(res.errMsg)
                 Toast.success('连接成功')
+                return
             },
             fail(err) {
                 that.showErrMsg(err)
+                return
             },
-            complete() {},
         })
     },
     showErrMsg(err) {

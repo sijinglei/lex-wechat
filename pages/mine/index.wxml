@@ -54,11 +54,16 @@
           <van-icon name="service-o" size="24" />
           <text>意见反馈</text>
         </div>
+        <div class="item" bindtap="wifi">
+          <van-icon name="bar-chart-o" size="24" />
+          <text>附近WIFI</text>
+        </div>
+
       </view>
     </view>
   </view>
   <view class="foot">
-    <button bindtap="logout">退出登录</button>
+    <button wx:if="{{wxuserInfo}}" bindtap="logout">退出登录</button>
     <view class="copy">
       <view>客服电话：17665256666 工作时间：9:30-18:30</view>
       <view>人力资源许可证｜营业执照</view>
