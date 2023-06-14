@@ -1,4 +1,5 @@
 var app = getApp()
+import { getDistance } from '../../utils/getDistance.js'
 Component({
     /**
      * 组件的属性列表
@@ -21,21 +22,20 @@ Component({
     },
     lifetimes: {
         attached() {
-            // let { latitude, longitude, address } = this.properties.item
-            let latitude1 = wx.getStorageSync('latitude') || ''
-            let longitude1 = wx.getStorageSync('longitude') || ''
-            this.properties.item.latitude1 = latitude1
-            this.properties.item.longitude1 = longitude1
-            this.properties.item.latitude = Number(
-                this.properties.item.latitude
-            ).toFixed(5)
-            this.properties.item.longitude = Number(
-                this.properties.item.longitude
-            ).toFixed(5)
+            let { latitude, longitude } = this.properties.item
+            let latitude1 = wx.getStorageSync('lex_latitude') || ''
+            let longitude1 = wx.getStorageSync('lex_longitude') || ''
+            let _latitude = Number(Number(latitude).toFixed(5))
+            let _longitude = Number(Number(longitude).toFixed(5))
+            this.properties.item.juli = getDistance(
+                latitude1,
+                longitude1,
+                _latitude,
+                _longitude
+            )
             this.setData({
                 detail: this.properties.item,
             })
-            console.log('properties.item', this.properties.item)
         },
     },
     /**
@@ -43,12 +43,9 @@ Component({
      */
     methods: {
         toDetail(id) {
-            // let latitude1 = wx.getStorageSync('latitude') || ''
-            // let longitude1 = wx.getStorageSync('longitude') || ''
-            // this.properties.item.latitude1 = latitude1
-            // this.properties.item.longitude1 = longitude1
+            console.log('跳转详情', this.data.detail)
             wx.navigateTo({
-                url: '/pages/details/details?item=' + JSON.stringify(this.properties.item),
+                url: '/pages/details/details?item=' + JSON.stringify(this.data.detail),
             })
         },
     },

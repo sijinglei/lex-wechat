@@ -7,7 +7,7 @@
     </view>
     <view class="infos">
       <view class="txt add">{{item.area}}·{{item.address}} |
-        距您约{{lex.getDistance(detail.latitude1,detail.longitude1,detail.latitude,detail.longitude)}}</view>
+        距您约{{detail.juli}}</view>
       <view class="txt">薪酬：{{item.settlementName}}，{{item.salary}}</view>
       <view class="txt">要求：性别{{item.sex==1?'男':item.sex==2?'女':'不限'}}，年龄{{item.age}}，{{item.content}}</view>
     </view>

@@ -115,15 +115,11 @@ Page({
     onShow() {
         console.log('show work')
         let that = this
-            // 延期获取一下
-        setTimeout(() => {
-            console.log('currentAddress', that.data.currentAddress, app)
-            const adrr = app.globalData.currentAddress
-            that.setData({
-                currentAddress: adrr,
+        that.setData({
+                currentAddress: '',
             })
-            console.log('currentAddress', adrr)
-        }, 1000)
+            // 延期获取一下
+        this.getAddress()
         let areaId = wx.getStorageSync('VIEW_AREAID') || ''
         if (areaId) {
             this.setData({
@@ -132,7 +128,18 @@ Page({
         }
         that.getList()
     },
-
+    getAddress() {
+        const timmer = setInterval(() => {
+            if (this.data.currentAddress) {
+                clearInterval(timmer)
+            } else {
+                const adrr = app.globalData.currentAddress
+                this.setData({
+                    currentAddress: adrr,
+                })
+            }
+        }, 100)
+    },
     /**
      * 生命周期函数--监听页面隐藏
      */

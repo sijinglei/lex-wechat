@@ -1,4 +1,3 @@
-<wxs src="../../filter/filter.wxs" module="lex" />
 <view class="details">
   <view class="between head">
     <view class="f-start title">
@@ -13,7 +12,7 @@
         <view class="t1">{{item.title}}</view>
         <view class="t2">{{address}}</view>
         <view class="t3">
-          距您约{{lex.getDistance(item.latitude1,item.longitude1,item.latitude,item.longitude)}}
+          距您约{{item.juli}}
         </view>
       </view>
     </view>

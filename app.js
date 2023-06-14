@@ -31,7 +31,6 @@ App({
                 let locationEnabled = res.locationEnabled //判断手机定位服务是否开启
                 let locationAuthorized = res.locationAuthorized //判断定位服务是否允许微信授权
                 let that = this
-                console.log('是否开启定位', that)
                 if (!locationEnabled || !locationAuthorized) {
                     //手机定位服务（GPS）未授权
                     wx.showToast({
@@ -40,24 +39,24 @@ App({
                     return
                 } else {
                     qqmapsdk = new QQMapWX({
-                        key: that.globalData.mapSDKKey, //腾讯位置服务key
-                    })
-
-                    // let address = wx.getStorageSync('address') || ''
-                    // 获取选择位置的缓存数据
-                    let _latitude = wx.getStorageSync('latitude') || ''
-                    let _longitude = wx.getStorageSync('longitude') || ''
+                            key: that.globalData.mapSDKKey, //腾讯位置服务key
+                        })
+                        // 获取选择位置的缓存数据
+                    let _latitude = wx.getStorageSync('lex_latitude') || ''
+                    let _longitude = wx.getStorageSync('lex_longitude') || ''
                     console.log('获取定位', _latitude, _longitude)
                     if (_latitude && _longitude) {
                         that.getAddress({ latitude: _latitude, longitude: _longitude })
                     } else {
                         wx.getLocation({
+                            isHighAccuracy: true,
                             type: 'gcj02',
                             success(res) {
+                                console.log('获取当前位置', res)
                                 const latitude = res.latitude
                                 const longitude = res.longitude
-                                wx.setStorageSync('latitude', latitude)
-                                wx.setStorageSync('longitude', longitude)
+                                wx.setStorageSync('lex_latitude', latitude)
+                                wx.setStorageSync('lex_longitude', longitude)
                                 that.globalData.latitude = latitude
                                 that.globalData.longitude = longitude
                                 that.getAddress({ latitude, longitude })
