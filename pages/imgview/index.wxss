@@ -1,0 +1,59 @@
+.img-view {
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  position: relative;
+}
+
+.img-view .linear {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), white);
+  top: 0;
+  left: 0;
+}
+
+.img-view .main {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.9), white);
+  position: fixed;
+  height: 65%;
+  width: 100vw;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.img-view .main .txt {
+  color: #666;
+  font-size: 24rpx;
+  margin: 10rpx 0;
+}
+
+.img-view .main .btn {
+  background-color: #000;
+  border-radius: 20rpx;
+  color: #fff;
+  font-size: 32rpx;
+  width: 70vw;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-view .main .tip {
+  font-size: 30rpx;
+  color: #000;
+  margin-top: 40rpx;
+}
+
+.img-view .main .tip text {
+  color: blue;
+  font-size: 36rpx;
+  font-weight: bold;
+}

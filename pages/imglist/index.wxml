@@ -1,0 +1,6 @@
+<view class="imglist">
+  <view class="imgbox" wx:for="{{imgs}}" bindtap="viewLarge" data-imgurl="{{item.src}}">
+    <image src="{{item.src}}" mode="widthFix" lazy-load="{{true}}">
+    </image>
+  </view>
+</view>

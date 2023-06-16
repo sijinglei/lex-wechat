@@ -42,9 +42,9 @@
           <van-icon name="todo-list-o" size="24" />
           <text>我发布的</text>
         </div>
-        <div class="item">
+        <div class="item" bindtap="viewImgs">
           <van-icon name="like-o" size="24" />
-          <text>我收藏的</text>
+          <text>图片壁纸</text>
         </div>
         <div class="item">
           <van-icon name="setting-o" size="24" />
