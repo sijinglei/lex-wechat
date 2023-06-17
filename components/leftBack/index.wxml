@@ -1,5 +1,7 @@
-<view class="left-back" style="top:{{top}}" bindtap="goBack">
-  <view class="left-arrow">
-    <van-icon name="arrow-left" />
+<view class="left-back" style="top:{{top}}">
+  <view class="left-arrow" style="--sh:{{statusBarHeight / 2}}px;height:var(--sh);">
+    <van-icon bindtap="goBack" name="arrow-left" size="22" />
+    <view class="h-line">|</view>
+    <van-icon bindtap="goHome" name="wap-home-o" size="22" />
   </view>
 </view>

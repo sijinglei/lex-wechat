@@ -1,5 +1,5 @@
 // pages/mine/index.js
-import Dialog from '@vant/weapp/dialog/dialog'
+const app = getApp()
 Page({
     /**
      * 页面的初始数据
@@ -32,8 +32,10 @@ Page({
         })
         let user = JSON.parse(wx.getStorageSync('user') || null)
         if (user) {
+            let { avatarUrl } = app.globalData.userInfo
             user.mobile =
                 user.mobile.substring(0, 4) + '****' + user.mobile.substring(7, 11)
+            user.avatarUrl = avatarUrl
         }
         this.setData({
             wxuserInfo: user,
@@ -49,21 +51,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {},
-    logout() {
-        Dialog.confirm({
-                title: '提醒',
-                message: '是否确认退出登陆？',
-            })
-            .then(() => {
-                wx.clearStorageSync()
-                wx.switchTab({
-                    url: '/pages/work/index',
-                })
-            })
-            .catch(() => {
-                // on cancel
-            })
-    },
+
     wifi() {
         wx.navigateTo({
             url: '/pages/index/index',
@@ -72,6 +60,16 @@ Page({
     viewImgs() {
         wx.navigateTo({
             url: '/pages/imglist/index',
+        })
+    },
+    toLogin() {
+        wx.navigateTo({
+            url: '/pages/login/login',
+        })
+    },
+    toSetting() {
+        wx.navigateTo({
+            url: '/pages/setting/index',
         })
     },
     /**

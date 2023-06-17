@@ -70,39 +70,28 @@ Page({
         let that = this // 微信获取登录code
         wx.login({
             success(res1) {
+                console.log(res1)
                 if (res1.code) {
+                    let { encryptedData, iv } = e.detail
                     wx.setStorageSync('code', res1.code) // 后台获取用户openid
-                    let openid = app.globalData.appId
-                    wx.setStorageSync('openid', openid)
                         // wx.setStorageSync('session_key', res2.data.session_key) // 后台小程序自动登录
                     util
-                        .post('/app/member/loginByCode', { code: res1.code })
+                        .post('/app/member/loginByCode', {
+                            code: res1.code,
+                            encryptedData,
+                            iv,
+                        })
                         .then(res2 => {
                             console.log('res2', res2)
+                            if (res2.code == 0) {
+                                let { token } = res2.obj
+                                wx.setStorageSync('token', token)
+                                wx.setStorageSync('user', JSON.stringify(res2.obj))
+                                wx.switchTab({
+                                    url: '/pages/work/index',
+                                })
+                            }
                         })
-                        // app.api.user
-                        //   .autologin({ openid: res2.data.openid, code: res1.code })
-                        //   .then(res3 => {
-                        //     if (res3.code === 2000) {
-                        //       // 至此登录完成
-                        //       wx.setStorageSync('access_token', res3.data.access_token) // 查询用户是否绑定过手机号
-                        //       app.api.user.info().then(res4 => {
-                        //         if (res4.code === 2000) {
-                        //           if (res4.data.bind === 2) {
-                        //             app.toast('登录成功', 'none')
-                        //             that.goBack()
-                        //           } else {
-                        //             // 未绑定手机号，去绑定
-                        //             that.getPhoneNumber(e)
-                        //           }
-                        //         } else {
-                        //           app.toast(res4.msg, 'none')
-                        //         }
-                        //       })
-                        //     } else {
-                        //       app.toast(res3.msg, 'none')
-                        //     }
-                        //   })
                 } else {
                     app.toast('登录失败！' + res1.errMsg)
                 }

@@ -1,11 +1,11 @@
-  <leftBack />
-  <view class="img-view" style="background-image:url({{imgSrc}});">
-    <view class="linear"></view>
-    <view class="main">
-      <text class="txt">
-        解锁后，返回即可
-      </text>
-      <view class="btn" bindtap="toViewBanner">看视频广告，解锁获取</view>
-      <view class="tip">已有<text>89*</text>位小伙伴解锁获取了哦～</view>
-    </view>
+<leftBack />
+<view class="img-view" style="background-image:url({{imgSrc}});">
+  <view class="linear"></view>
+  <view class="main">
+    <text class="txt">
+      解锁后，返回即可
+    </text>
+    <view class="btn" bindtap="toViewBanner">看视频广告，解锁获取</view>
+    <view class="tip">已有<text>89*</text>位小伙伴解锁获取了哦～</view>
   </view>
+</view>

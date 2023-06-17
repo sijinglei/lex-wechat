@@ -16,7 +16,8 @@
     "pages/register/register",
     "pages/success/success",
     "pages/imglist/index",
-    "pages/imgview/index"
+    "pages/imgview/index",
+    "pages/setting/index"
   ],
   "permission": {
     "scope.userLocation": {

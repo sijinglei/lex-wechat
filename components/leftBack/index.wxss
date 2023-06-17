@@ -1,16 +1,20 @@
 .left-back {
-  position: absolute;
-  left: 30rpx;
-  z-index: 88;
+    position: fixed;
+    left: 30rpx;
+    z-index: 88;
 }
 
 .left-arrow {
-  width: 48rpx;
-  height: 48rpx;
-  background-color: #fff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #333;
+    background-color: rgba(255, 255, 2552, 0.9);
+    border-radius: calc(var(--sh) / 2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #333;
+    padding: 5rpx 20rpx;
+}
+
+.left-arrow .h-line {
+    color: #999;
+    margin: 0 10rpx;
 }

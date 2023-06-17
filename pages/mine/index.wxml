@@ -3,7 +3,7 @@
     <view class="info">
       <image wx:if="{{wxuserInfo&&wxuserInfo.avatarUrl}}" class="logo" src="{{wxuserInfo.avatarUrl}}" mode="aspectFill">
       </image>
-      <image wx:else class="logo" src="/image/logo.jpg" mode="aspectFill"></image>
+      <image bindtap="toLogin" wx:else class="logo" src="/image/logo.jpg" mode="aspectFill"></image>
       <view class="title">
         <block wx:if="{{wxuserInfo}}">
           <text class="h1">{{(wxuserInfo&&wxuserInfo.name)||'--'}}</text>
@@ -46,7 +46,7 @@
           <van-icon name="like-o" size="24" />
           <text>图片壁纸</text>
         </div>
-        <div class="item">
+        <div class="item" bindtap="toSetting">
           <van-icon name="setting-o" size="24" />
           <text>设置</text>
         </div>
@@ -63,7 +63,6 @@
     </view>
   </view>
   <view class="foot">
-    <button wx:if="{{wxuserInfo}}" bindtap="logout">退出登录</button>
     <view class="copy">
       <view>客服电话：17665256666 工作时间：9:30-18:30</view>
       <view>人力资源许可证｜营业执照</view>
